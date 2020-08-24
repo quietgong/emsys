@@ -18,7 +18,7 @@ def question_create(request):
             question.create_date = timezone.now()
             question.author = request.user
             question.save()
-            return redirect('pybo:index')
+            return redirect('pybo:detail', question_id=question.id)
     else:
         form = QuestionForm()
     context = {'form': form}
