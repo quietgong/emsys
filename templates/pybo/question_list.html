@@ -9,6 +9,7 @@
                 <option value="recent" {% if so == 'recent' %}selected{% endif %}>최신순</option>
                 <option value="recommend" {% if so == 'recommend' %}selected{% endif %}>추천순</option>
                 <option value="popular" {% if so == 'popular' %}selected{% endif %}>인기순</option>
+                <option value="history" {% if so == 'history' %}selected{% endif %}>과거순</option>
             </select>
         </div>
         <div class="col-4 input-group">
@@ -37,17 +38,22 @@
                 {{question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1}}
             </td>
             <td>
+                <!-- 추천수 표시 -->
                 {% if question.voter.all.count > 0 %}
                 <span class="badge badge-warning px-2 py-1">{{question.voter.all.count}}</span>
                 {% endif %}
             </td>
             <td class="text-left">
+                 <!-- 제목 표시 -->
                 <a href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a>
                 {% if question.answer_set.count > 0 %}
                 <span class="text-danger small ml-2">{{question.answer_set.count}}</span>
                 {% endif %}
             </td>
-            <td>{{ question.author.username }}</td> <!-- 글쓴이 추가 -->
+            <td>
+                <!-- 글쓴이 표시 -->
+                {{ question.author.username }}</td>
+                <!-- 작성일지 표시 -->
             <td>{{ question.create_date }}</td>
         </tr>
         {% endfor %}
@@ -105,6 +111,7 @@
     <input type="hidden" id="so" name="so" value="{{so}}">
 </form>
 {% endblock %}
+
 {% block script %}
 <script type='text/javascript'>
 $(document).ready(function(){

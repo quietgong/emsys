@@ -4,7 +4,6 @@ from django.db.models import Q, Count
 from ..models import Question
 
 def index(request):
-
     """
     pybo 목록 출력
     """
@@ -18,6 +17,8 @@ def index(request):
         question_list = Question.objects.annotate(num_voter=Count('voter')).order_by('-num_voter', '-create_date')
     elif so == 'popular':
         question_list = Question.objects.annotate(num_answer=Count('answer')).order_by('-num_answer', '-create_date')
+    elif so == 'history':
+        question_list = Question.objects.order_by('create_date')
     else:  # recent
         question_list = Question.objects.order_by('-create_date')
 
