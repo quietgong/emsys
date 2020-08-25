@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load pybo_filter %}
+{% load emsys_filter %}
 {% block content %}
 
 <div class="container my-3">
@@ -45,7 +45,7 @@
             </td>
             <td class="text-left">
                  <!-- 제목 표시 -->
-                <a href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a>
+                <a href="{% url 'emsys:detail' question.id %}">{{ question.subject }}</a>
                 {% if question.answer_set.count > 0 %}
                 <span class="text-danger small ml-2">{{question.answer_set.count}}</span>
                 {% endif %}
@@ -59,7 +59,7 @@
         {% endfor %}
         {% else %}
         <tr>
-            <td colspan="3">질문이 없습니다.</td>
+            <td colspan="3">공지사항이 없습니다.</td>
         </tr>
         {% endif %}
         </tbody>
@@ -103,7 +103,7 @@
         {% endif %}
     </ul>
     <!-- 페이징처리 끝 -->
-    <a href="{% url 'pybo:question_create' %}" class="btn btn-primary">질문 등록하기</a>
+    <a href="{% url 'emsys:question_create' %}" class="btn btn-primary">공지사항 등록</a>
 </div>
 <form id="searchForm" method="get" action="{% url 'index' %}">
     <input type="hidden" id="kw" name="kw" value="{{kw|default_if_none:''}}">

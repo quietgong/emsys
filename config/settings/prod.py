@@ -8,7 +8,7 @@ DEBUG = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pybo',
+        'NAME': 'emsys',
         'USER': 'dbmasteruser',
         'PASSWORD': 'nx%K;b)2]Dx+otNC&ah,LBoB|82d1ghP',
         'HOST': 'ls-e7085ef971e2ab19fa06e7e909875e07e8c80e2e.cnibbhagbaiv.ap-northeast-2.rds.amazonaws.com',

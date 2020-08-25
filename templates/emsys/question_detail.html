@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load pybo_filter %}
+{% load emsys_filter %}
 {% block content %}
 <div class="container my-3">
     <!-- 사용자오류 표시 -->
@@ -15,7 +15,7 @@
     <div class="row my-3">
         <div class="col-1"> <!-- 추천영역 -->
             <div class="bg-light text-center p-3 border font-weight-bolder mb-1">{{question.voter.count}}</div>
-            <a href="#" data-uri="{% url 'pybo:vote_question' question.id  %}"
+            <a href="#" data-uri="{% url 'emsys:vote_question' question.id  %}"
                class="recommend btn btn-sm btn-secondary btn-block my-1">추천</a>
         </div>
         <div class="col-11"> <!-- 질문영역 -->
@@ -36,10 +36,10 @@
                     </div>
                     {% if request.user == question.author %}
                     <div class="my-3">
-                        <a href="{% url 'pybo:question_modify' question.id %}"
+                        <a href="{% url 'emsys:question_modify' question.id %}"
                            class="btn btn-sm btn-outline-secondary">수정</a>
                         <a href="#" class="delete btn btn-sm btn-outline-secondary"
-                           data-uri = "{% url 'pybo:question_delete' question.id %}">삭제</a>
+                           data-uri = "{% url 'emsys:question_delete' question.id %}">삭제</a>
                     </div>
                     {% endif %}
                 </div>
@@ -57,16 +57,16 @@
                 {% endif %}
             </span>
                         {% if request.user == comment.author %}
-                        <a href="{% url 'pybo:comment_modify_question' comment.id  %}" class="small">수정</a>,
+                        <a href="{% url 'emsys:comment_modify_question' comment.id  %}" class="small">수정</a>,
                         <a href="#" class="small delete"
-                           data-uri="{% url 'pybo:comment_delete_question' comment.id  %}">삭제</a>
+                           data-uri="{% url 'emsys:comment_delete_question' comment.id  %}">삭제</a>
                         {% endif %}
                     </div>
                     {% endfor %}
                 </div>
                 {% endif %}
                 <div>
-                    <a href="{% url 'pybo:comment_create_question' question.id  %}"
+                    <a href="{% url 'emsys:comment_create_question' question.id  %}"
                        class="small"><small>댓글 추가 ..</small></a>
                 </div>
             </div>
@@ -78,7 +78,7 @@
     <div class="row my-3">
         <div class="col-1">  <!-- 추천영역 -->
             <div class="bg-light text-center p-3 border font-weight-bolder mb-1">{{answer.voter.count}}</div>
-            <a href="#" data-uri="{% url 'pybo:vote_answer' answer.id  %}"
+            <a href="#" data-uri="{% url 'emsys:vote_answer' answer.id  %}"
                class="recommend btn btn-sm btn-secondary btn-block my-1">추천</a>
         </div>
         <div class="col-11">  <!-- 답변영역 -->
@@ -99,10 +99,10 @@
                     </div>
                     {% if request.user == answer.author %}
                     <div class="my-3">
-                        <a href="{% url 'pybo:answer_modify' answer.id %}"
+                        <a href="{% url 'emsys:answer_modify' answer.id %}"
                            class="btn btn-sm btn-outline-secondary">수정</a>
                         <a href="#" class="delete btn btn-sm btn-outline-secondary "
-                           data-uri="{% url 'pybo:answer_delete' answer.id  %}">삭제</a>
+                           data-uri="{% url 'emsys:answer_delete' answer.id  %}">삭제</a>
                     </div>
                     {% endif %}
                     <!-- 답변 댓글 Start -->
@@ -119,16 +119,16 @@
                     {% endif %}
                 </span>
                             {% if request.user == comment.author %}
-                            <a href="{% url 'pybo:comment_modify_answer' comment.id  %}" class="small">수정</a>,
+                            <a href="{% url 'emsys:comment_modify_answer' comment.id  %}" class="small">수정</a>,
                             <a href="#" class="small delete"
-                               data-uri="{% url 'pybo:comment_delete_answer' comment.id  %}">삭제</a>
+                               data-uri="{% url 'emsys:comment_delete_answer' comment.id  %}">삭제</a>
                             {% endif %}
                         </div>
                         {% endfor %}
                     </div>
                     {% endif %}
                     <div>
-                        <a href="{% url 'pybo:comment_create_answer' answer.id  %}"
+                        <a href="{% url 'emsys:comment_create_answer' answer.id  %}"
                            class="small"><small>댓글 추가 ..</small></a>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
         </div>
     </div>
 {% endfor %}
-<form action="{% url 'pybo:answer_create' question.id %}" method="post" class="my-3">
+<form action="{% url 'emsys:answer_create' question.id %}" method="post" class="my-3">
     {% csrf_token %}
     {% if form.errors %}
     <div class="alert alert-danger" role="alert">
@@ -153,7 +153,7 @@
                       name="content" placeholder="비방 또는 욕설이 포함된 내용은 관리자에 의해 삭제 될 수 있습니다."
                       id="content" class="form-control" rows="10"></textarea>
     </div>
-    <a href="{% url 'pybo:index' %}" class="btn btn-primary">목록</a>
+    <a href="{% url 'emsys:index' %}" class="btn btn-primary">목록</a>
     <input type="submit" value="답변등록" class="btn btn-primary">
 </form>
 {% endblock %}

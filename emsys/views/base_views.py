@@ -5,7 +5,19 @@ from ..models import Question
 
 def index(request):
     """
-    pybo 목록 출력
+    emsys 메인 페이지 출력
+    """
+    return render(request, 'emsys/index.html')
+
+def intro(request):
+    """
+    emsys 소개 페이지 출력
+    """
+    return render(request, 'emsys/intro.html')
+
+def list(request):
+    """
+    emsys 목록 출력
     """
     # 입력 파라미터
     page = request.GET.get('page', '1') # 페이지
@@ -37,12 +49,12 @@ def index(request):
 
     context = {'question_list': page_obj, 'page': page, 'kw': kw, 'so': so} # page, kw, so가 추가되었다.
 
-    return render(request, 'pybo/question_list.html', context)
+    return render(request, 'emsys/question_list.html', context)
 
 def detail(request, question_id):
     """
-    pybo 내용 출력
+    emsys 내용 출력
     """
     question = get_object_or_404(Question, pk=question_id)
     context = {'question': question}
-    return render(request, 'pybo/question_detail.html', context)
+    return render(request, 'emsys/question_detail.html', context)
