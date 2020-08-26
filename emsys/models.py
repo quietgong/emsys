@@ -1,10 +1,9 @@
 import os
-from datetime import datetime
-from uuid import uuid4
 
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
+
 
 class Question(models.Model):
     subject = models.CharField(max_length=200)
