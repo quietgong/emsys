@@ -41,12 +41,12 @@
                         <a href="#" class="delete btn btn-sm btn-outline-secondary"
                            data-uri = "{% url 'emsys:question_delete' question.id %}">삭제</a>
                     </div>
+                    {% endif %}
                     {% if question.upload_files %}
                         <div class="col-12 text-right">
                             <span>첨부파일 :&nbsp;</span>
                             <a href="{% url 'emsys:question_download' question.id %}" >{{ question.filename|truncatechars:100 }}</a>
                         </div>
-                        {% endif %}
                     <img src = "{{question.upload_files.url}}" width="50%", height="50%">
                     {% endif %}
                 </div>
