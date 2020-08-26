@@ -4,10 +4,11 @@ from emsys.models import Question, Answer, Comment
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = ['subject', 'content']
+        fields = ['subject', 'content', 'upload_files', ]
         labels = {
             'subject': '제목',
             'content': '내용',
+            'upload_files': '파일',
         }
         # widget 항목 삭제 (목적 : 디자인 영역과 서버 영역 분리)
 

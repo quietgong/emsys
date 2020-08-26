@@ -23,6 +23,13 @@
                 <div class="card-body">
                     <div class="card-text">{{question.content|mark}}</div>
                     <div class="d-flex justify-content-end">
+                        {% if question.upload_files %}
+                        <div class="col-12 text-right">
+                            <span>첨부파일 :&nbsp;</span>
+                            <a href="{% url 'emsys:question_download' question.id %}" >{{ question.filename|truncatechars:100 }}</a>
+                            <img src = "{{question.upload_files.url}}" width="50%", height="50%">
+                        </div>
+                        {% endif %}
                         {% if question.modify_date %}
                         <div class="badge badge-light p-2 text-left mx-3">
                             <div class="mb-2">modified at</div>
@@ -135,30 +142,30 @@
             </div>
         </div>
     </div>
-{% endfor %}
-<form action="{% url 'emsys:answer_create' question.id %}" method="post" class="my-3">
-    {% csrf_token %}
-    {% if form.errors %}
-    <div class="alert alert-danger" role="alert">
-        {% for field in form %}
-        {% if field.errors %}
-        <strong>{{field.label}}</strong>
-        {{field.errors}}
+    {% endfor %}
+    <form action="{% url 'emsys:answer_create' question.id %}" method="post" class="my-3">
+        {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+            {% if field.errors %}
+            <strong>{{field.label}}</strong>
+            {{field.errors}}
+            {% endif %}
+            {% endfor %}
+        </div>
         {% endif %}
-        {% endfor %}
-    </div>
-    {% endif %}
-    <div class="form-group">
+        <div class="form-group">
             <textarea {% if not user.is_authenticated %}disabled{% endif %}
                       name="content" placeholder="비방 또는 욕설이 포함된 내용은 관리자에 의해 삭제 될 수 있습니다."
                       id="content" class="form-control" rows="10"></textarea>
-    </div>
-    <a href="{% url 'emsys:index' %}" class="btn btn-primary">목록</a>
-    <input type="submit" value="답변등록" class="btn btn-primary">
-</form>
-{% endblock %}
-{% block script %}
-<script type="text/javascript">
+        </div>
+        <a href="{% url 'emsys:index' %}" class="btn btn-primary">목록</a>
+        <input type="submit" value="답변등록" class="btn btn-primary">
+    </form>
+    {% endblock %}
+    {% block script %}
+    <script type="text/javascript">
     $(document).ready(function(){
     $(".delete").on('click', function() {
         if(confirm("정말로 삭제하시겠습니까?")) {
@@ -172,4 +179,4 @@
     });
 });
 </script>
-{% endblock %}
+    {% endblock %}

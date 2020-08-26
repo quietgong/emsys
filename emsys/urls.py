@@ -35,4 +35,7 @@ urlpatterns = [
     # vote_views.py
     path('vote/question/<int:question_id>/', vote_views.vote_question, name='vote_question'),
     path('vote/answer/<int:answer_id>/', vote_views.vote_answer, name='vote_answer'),
-    ]
+
+    # 파일업로드 추가
+    path('download/<int:pk>', question_views.question_download_view, name="question_download"),
+]
