@@ -23,13 +23,6 @@
                 <div class="card-body">
                     <div class="card-text">{{question.content|mark}}</div>
                     <div class="d-flex justify-content-end">
-                        {% if question.upload_files %}
-                        <div class="col-12 text-right">
-                            <span>첨부파일 :&nbsp;</span>
-                            <a href="{% url 'emsys:question_download' question.id %}" >{{ question.filename|truncatechars:100 }}</a>
-                            <img src = "{{question.upload_files.url}}" width="50%", height="50%">
-                        </div>
-                        {% endif %}
                         {% if question.modify_date %}
                         <div class="badge badge-light p-2 text-left mx-3">
                             <div class="mb-2">modified at</div>
@@ -48,6 +41,13 @@
                         <a href="#" class="delete btn btn-sm btn-outline-secondary"
                            data-uri = "{% url 'emsys:question_delete' question.id %}">삭제</a>
                     </div>
+                    {% if question.upload_files %}
+                        <div class="col-12 text-right">
+                            <span>첨부파일 :&nbsp;</span>
+                            <a href="{% url 'emsys:question_download' question.id %}" >{{ question.filename|truncatechars:100 }}</a>
+                        </div>
+                        {% endif %}
+                    <img src = "{{question.upload_files.url}}" width="50%", height="50%">
                     {% endif %}
                 </div>
                 <!-- 질문 댓글 Start -->
