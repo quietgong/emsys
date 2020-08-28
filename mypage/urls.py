@@ -3,6 +3,6 @@ from mypage import views
 app_name = 'mypage'
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('change_pw', views.password_edit_view, name='password_edit'),
 
 ]

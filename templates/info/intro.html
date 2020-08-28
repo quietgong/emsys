@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 <h1>소개 Page입니다.</h1>
 <div class="inner">
@@ -23,38 +23,10 @@
    <div>
        <div>
            <div>
-                <img src="static/test.jpg" width="10%", height="10%" alt="Person 1" />
+               <img src="{% static 'img/test.jpg' %}", width="30%", height="30%">
             </div>
             <h3>Magna</h3>
             <p>Cipdum dolor</p>
-        </div>
-        <div>
-            <div>
-                <img src="images/pic04.jpg" alt="Person 2" />
-            </div>
-            <h3>Ipsum</h3>
-            <p>Vestibulum comm</p>
-        </div>
-       <div>
-           <div>
-                <img src="images/pic05.jpg" alt="Person 3" />
-            </div>
-            <h3>Tempus</h3>
-            <p>Fusce pellentes</p>
-        </div>
-        <div>
-           <div>
-                <img src="images/pic06.jpg" alt="Person 4" />
-            </div>
-            <h3>Dolore</h3>
-            <p>Praesent placer</p>
-        </div>
-       <div>
-           <div>
-                <img src="images/pic06.jpg" alt="Person 4" />
-            </div>
-            <h3>Dolore</h3>
-            <p>Praesent placer</p>
         </div>
     </div>
 </div>
