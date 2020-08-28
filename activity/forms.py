@@ -1,0 +1,21 @@
+from django import forms
+from activity.models import Post, Comment
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['subject', 'content', 'upload_files', ]
+        labels = {
+            'subject': '제목',
+            'content': '내용',
+            'upload_files': '파일',
+        }
+        # widget 항목 삭제 (목적 : 디자인 영역과 서버 영역 분리)
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
+        labels = {
+            'content': '댓글내용',
+        }

@@ -15,8 +15,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'emsys.apps.PyboConfig',
+
     'common.apps.CommonConfig',
+    'academic.apps.AcademicConfig',
+    'activity.apps.ActivityConfig',
+    'contest.apps.ContestConfig',
+    'info.apps.InfoConfig',
+    'notice.apps.NoticeConfig',
+    'notice_sw.apps.NoticeswConfig',
+    'notice_sw7up.apps.Noticesw7UpConfig',
+    'mypage.apps.MypageConfig',
 ]
 
 MIDDLEWARE = [
