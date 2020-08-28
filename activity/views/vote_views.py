@@ -7,7 +7,7 @@ from ..models import Post
 @login_required(login_url='common:login')
 def vote_post(request, post_id):
     """
-    actvity 질문추천등록
+    actvity 추천등록
     """
     post = get_object_or_404(Post, pk=post_id)
     if request.user == post.author:

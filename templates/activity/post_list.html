@@ -47,9 +47,10 @@
             <td class="text-left">
                  <!-- 제목 표시 -->
                 <a href="{% url 'activity:detail' post.id %}">{{ post.subject }}</a>
-                {% if post.answer_set.count > 0 %}
-                <span class="text-danger small ml-2">{{post.answer_set.count}}</span>
+                {% if post.upload_files %}
+                <img src = "{{post.upload_files.url}}" width="50%", height="50%">
                 {% endif %}
+
             </td>
             <td>
                 <!-- 글쓴이 표시 -->
@@ -106,7 +107,7 @@
     <!-- 페이징처리 끝 -->
     <a href="{% url 'activity:post_create' %}" class="btn btn-primary">글쓰기</a>
 </div>
-<form id="searchForm" method="get" action="{% url 'index' %}">
+<form id="searchForm" method="get" action="{% url 'activity:list' %}">
     <input type="hidden" id="kw" name="kw" value="{{kw|default_if_none:''}}">
     <input type="hidden" id="page" name="page" value="{{page}}">
     <input type="hidden" id="so" name="so" value="{{so}}">

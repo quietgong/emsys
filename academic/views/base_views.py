@@ -3,24 +3,26 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import Q, Count
 from ..models import Question
 
-def index(request):
+def list(request):
     """
     academic 목록 출력
     """
     # 입력 파라미터
     page = request.GET.get('page', '1') # 페이지
     kw = request.GET.get('kw', '') # 검색어
-    so = request.GET.get('so', 'recent') # 정렬기준
+    so = request.GET.get('so', '공통') # 정렬기준
 
     # 정렬
-    if so == 'recommend':
-        question_list = Question.objects.annotate(num_voter=Count('voter')).order_by('-num_voter', '-create_date')
-    elif so == 'popular':
-        question_list = Question.objects.annotate(num_answer=Count('answer')).order_by('-num_answer', '-create_date')
-    elif so == 'history':
-        question_list = Question.objects.order_by('create_date')
-    else:  # recent
-        question_list = Question.objects.order_by('-create_date')
+    if so == '공통':
+        question_list = Question.objects.filter(grade='공통')
+    elif so == '1학년':
+        question_list = Question.objects.filter(grade='1학년')
+    elif so == '2학년':
+        question_list = Question.objects.filter(grade='2학년')
+    elif so == '3학년':
+        question_list = Question.objects.filter(grade='3학년')
+    else:
+        question_list = Question.objects.filter(grade='4학년')
 
     # 검색
     if kw:

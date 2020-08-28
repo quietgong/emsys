@@ -15,7 +15,7 @@ from ..models import Post
 @login_required(login_url='common:login')
 def post_create(request):
     """
-    activity 질문등록
+    activity 등록
     """
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
@@ -36,7 +36,7 @@ def post_create(request):
 @login_required(login_url='common:login')
 def post_modify(request, post_id):
     """
-    activity 질문수정
+    activity 수정
     """
     post = get_object_or_404(Post, pk=post_id)
     if request.user != post.author:
@@ -67,7 +67,7 @@ def post_modify(request, post_id):
 @login_required(login_url='common:login')
 def post_delete(request, post_id):
     """
-    activity 질문삭제
+    activity 삭제
     """
     post = get_object_or_404(Post, pk=post_id)
     if request.user != post.author:

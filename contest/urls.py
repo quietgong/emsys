@@ -9,7 +9,7 @@ urlpatterns = [
     path('<int:post_id>/', base_views.detail, name='detail'),
 
     # post_views.py
-    path('post/list/', base_views.index, name='list'),
+    path('post/list/', base_views.list, name='list'),
     path('post/create/', post_views.post_create, name='post_create'),
     path('post/modify/<int:post_id>/', post_views.post_modify, name='post_modify'),
     path('post/delete/<int:post_id>/', post_views.post_delete, name='post_delete'),

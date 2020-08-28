@@ -74,7 +74,7 @@
                 {% endif %}
                 <div>
                     <a href="{% url 'academic:comment_create_question' question.id  %}"
-                       class="small"><small>댓글 추가 ..</small></a>
+                       class="small"><small>댓글 추가</small></a>
                 </div>
             </div>
         </div>
@@ -95,7 +95,7 @@
                     <div class="d-flex justify-content-end">
                         {% if answer.modify_date %}
                         <div class="badge badge-light p-2 text-left mx-3">
-                            <div class="mb-2">modified at</div>
+                            <div class="mb-2">수정됨</div>
                             <div>{{answer.modify_date}}</div>
                         </div>
                         {% endif %}

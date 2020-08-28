@@ -1,5 +1,5 @@
 import os
-
+from django.contrib.auth.models import User
 from django.conf import settings
 from django.db import models
 
@@ -7,6 +7,7 @@ class Post(models.Model):
     objects = None
     subject = models.CharField(max_length=200)
     content = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Info_author')
     create_date = models.DateTimeField()
     upload_files = models.FileField(null=True, blank=True, verbose_name='파일')
     filename = models.CharField(max_length=64, null=True, verbose_name='첨부파일명')

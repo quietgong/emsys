@@ -2,12 +2,14 @@ import os
 
 from django.conf import settings
 from django.db import models
+from django.contrib.auth.models import User
 
 class Post(models.Model):
     objects = None
     subject = models.CharField(max_length=200)
     content = models.TextField()
     create_date = models.DateTimeField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Notice_author')
     upload_files = models.FileField(null=True, blank=True, verbose_name='파일')
     filename = models.CharField(max_length=64, null=True, verbose_name='첨부파일명')
     def delete(self, *args, **kargs):

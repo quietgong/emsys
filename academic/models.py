@@ -4,7 +4,6 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 
-
 class Question(models.Model):
     subject = models.CharField(max_length=200)
     content = models.TextField()
@@ -14,6 +13,7 @@ class Question(models.Model):
     voter = models.ManyToManyField(User, blank=True, related_name='Academic_voter') # voter 추가
     upload_files = models.FileField(null=True, blank=True, verbose_name='파일')
     filename = models.CharField(max_length=64, null=True, verbose_name='첨부파일명')
+    grade = models.CharField(max_length=10, default='공통')
     def delete(self, *args, **kargs):
         if self.upload_files:
             os.remove(os.path.join(settings.MEDIA_ROOT, self.upload_files.path))

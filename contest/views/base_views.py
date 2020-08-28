@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import Q, Count
 from ..models import Post
 
-def index(request):
+def list(request):
     """
     contest 목록 출력
     """
@@ -15,8 +15,6 @@ def index(request):
     # 정렬
     if so == 'recommend':
         post_list = Post.objects.annotate(num_voter=Count('voter')).order_by('-num_voter', '-create_date')
-    elif so == 'popular':
-        post_list = Post.objects.annotate(num_answer=Count('answer')).order_by('-num_answer', '-create_date')
     elif so == 'history':
         post_list = Post.objects.order_by('create_date')
     else:  # recent
