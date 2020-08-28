@@ -60,7 +60,7 @@
         {% endfor %}
         {% else %}
         <tr>
-            <td colspan="3">공지사항이 없습니다.</td>
+            <td colspan="3">글이 없습니다.</td>
         </tr>
         {% endif %}
         </tbody>
@@ -104,7 +104,7 @@
         {% endif %}
     </ul>
     <!-- 페이징처리 끝 -->
-    <a href="{% url 'academic:question_create' %}" class="btn btn-primary">공지사항 등록</a>
+    <a href="{% url 'academic:question_create' %}" class="btn btn-primary">글쓰기</a>
 </div>
 <form id="searchForm" method="get" action="{% url 'index' %}">
     <input type="hidden" id="kw" name="kw" value="{{kw|default_if_none:''}}">

@@ -15,7 +15,7 @@ from ..models import Post
 @login_required(login_url='common:login')
 def post_create(request):
     """
-    actvity 질문등록
+    activity 질문등록
     """
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
@@ -27,21 +27,21 @@ def post_create(request):
                 if 'upload_files' in request.FILES.keys():
                     post.filename = request.FILES['upload_files'].name
             post.save()
-            return redirect('actvity:detail', post_id=post.id)
+            return redirect('activity:detail', post_id=post.id)
     else:
         form = PostForm()
     context = {'form': form}
-    return render(request, 'actvity/post_form.html', context)
+    return render(request, 'activity/post_form.html', context)
 
 @login_required(login_url='common:login')
 def post_modify(request, post_id):
     """
-    actvity 질문수정
+    activity 질문수정
     """
     post = get_object_or_404(Post, pk=post_id)
     if request.user != post.author:
         messages.error(request, '수정 권한이 없습니다.')
-        return redirect('actvity:detail', post_id=post.id)
+        return redirect('activity:detail', post_id=post.id)
 
     if request.method == "POST":
         file_change_check = request.POST.get('fileChange', False)
@@ -58,23 +58,23 @@ def post_modify(request, post_id):
             post.author = request.user
             post.modify_date = timezone.now()
             post.save()
-            return redirect('actvity:detail', post_id=post.id)
+            return redirect('activity:detail', post_id=post.id)
     else:
         form = PostForm(instance=post)
     context={'form': form}
-    return render(request, 'actvity/post_form.html', context)
+    return render(request, 'activity/post_form.html', context)
 
 @login_required(login_url='common:login')
 def post_delete(request, post_id):
     """
-    actvity 질문삭제
+    activity 질문삭제
     """
     post = get_object_or_404(Post, pk=post_id)
     if request.user != post.author:
         messages.error(request, '삭제 권한이 없습니다.')
-        return redirect('actvity:detail', post_id=post.id)
+        return redirect('activity:detail', post_id=post.id)
     post.delete()
-    return redirect('actvity:list')
+    return redirect('activity:list')
 
 @login_required(login_url='common:login')
 def post_download_view(request, pk):
