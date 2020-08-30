@@ -23,6 +23,7 @@ for link in bsObject.find_all('td', {"class":'body_bold'}):
 
 for i in range(0, LIMIT):
   post_obj = {
+      'specific_id' : i,
       'post_title' : post_title[i],
       'post_link' : post_link[i]
   }
@@ -30,4 +31,4 @@ for i in range(0, LIMIT):
 print(result)
 
 for item in result:
-  Post(title = item['post_title'], link = item['post_link']).save()
+  Post(specific_id = 1, title = item['post_title'], link = item['post_link']).save()
