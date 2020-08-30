@@ -3,6 +3,6 @@ from notice_sw import views
 app_name = 'notice_sw'
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.list, name='list'),
     path('<int:post_id>/', views.detail, name='detail'),
 ]

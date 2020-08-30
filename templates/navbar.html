@@ -18,7 +18,7 @@
                 <a class="nav-link" href="{% url 'info:intro' %}">소개</a>
                 <a class="nav-link" href="{% url 'info:list' %}">정보공개</a>
                 <a class="nav-link" href="{% url 'notice:index'%}">동아리 공지사항</a>
-                <a class="nav-link" href="https://software.cbnu.ac.kr/bbs/bbs.php?db=notice" target="_blank">학과 공지사항</a>
+                <a class="nav-link" href="{% url 'notice_sw:list'%}">학과 공지사항</a>
                 <a class="nav-link" href="http://sw7up.cbnu.ac.kr/community/notice" target="_blank">소중사업단 공지사항</a>
                 <a class="nav-link" href="{% url 'activity:list'%}">동아리 활동</a>
                 <a class="nav-link" href="{% url 'academic:list'%}">학술자료</a>
