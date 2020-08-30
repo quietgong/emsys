@@ -15,7 +15,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'common.apps.CommonConfig',
+
+    'accounts.apps.AccountsConfig',
     'academic.apps.AcademicConfig',
     'activity.apps.ActivityConfig',
     'contest.apps.ContestConfig',
@@ -23,7 +24,6 @@ INSTALLED_APPS = [
     'notice.apps.NoticeConfig',
     'notice_sw.apps.NoticeswConfig',
     'notice_sw7up.apps.Noticesw7UpConfig',
-    'mypage.apps.MypageConfig',
 ]
 
 MIDDLEWARE = [
@@ -111,3 +111,12 @@ LOGOUT_REDIRECT_URL = '/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # 각 media file에 대한 URL prefix
 MEDIA_URL = '/media/'
+
+# SMTP 설정
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = 'junhooh.0403@gmail.com'
+EMAIL_HOST_PASSWORD = 'uvibcsebiyiilvsl'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

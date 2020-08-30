@@ -6,7 +6,7 @@ from django.utils import timezone
 from ..forms import CommentForm
 from ..models import Question, Answer, Comment
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def comment_create_question(request, question_id):
     """
     academic 질문댓글등록
@@ -27,7 +27,7 @@ def comment_create_question(request, question_id):
     context = {'form': form}
     return render(request, 'academic/comment_form.html', context)
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def comment_modify_question(request, comment_id):
     """
     academic 질문댓글수정
@@ -51,7 +51,7 @@ def comment_modify_question(request, comment_id):
     context = {'form': form}
     return render(request, 'academic/comment_form.html', context)
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def comment_delete_question(request, comment_id):
     """
     academic 질문댓글삭제
@@ -64,7 +64,7 @@ def comment_delete_question(request, comment_id):
         comment.delete()
     return redirect('academic:detail', question_id=comment.question_id)
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def comment_create_answer(request, answer_id):
     """
     academic 답글댓글등록
@@ -86,7 +86,7 @@ def comment_create_answer(request, answer_id):
     return render(request, 'academic/comment_form.html', context)
 
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def comment_modify_answer(request, comment_id):
     """
     academic 답글댓글수정
@@ -111,7 +111,7 @@ def comment_modify_answer(request, comment_id):
     return render(request, 'academic/comment_form.html', context)
 
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def comment_delete_answer(request, comment_id):
     """
     academic 답글댓글삭제

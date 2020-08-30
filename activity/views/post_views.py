@@ -12,7 +12,7 @@ from django.utils import timezone
 from ..forms import PostForm
 from ..models import Post
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def post_create(request):
     """
     activity 등록
@@ -33,7 +33,7 @@ def post_create(request):
     context = {'form': form}
     return render(request, 'activity/post_form.html', context)
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def post_modify(request, post_id):
     """
     activity 수정
@@ -64,7 +64,7 @@ def post_modify(request, post_id):
     context={'form': form}
     return render(request, 'activity/post_form.html', context)
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def post_delete(request, post_id):
     """
     activity 삭제
@@ -76,7 +76,7 @@ def post_delete(request, post_id):
     post.delete()
     return redirect('activity:list')
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def post_download_view(request, pk):
     post = get_object_or_404(Post, pk=pk)
     url = post.upload_files.url[1:]

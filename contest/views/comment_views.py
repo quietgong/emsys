@@ -6,7 +6,7 @@ from django.utils import timezone
 from ..forms import CommentForm
 from ..models import Post, Comment
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def comment_create_post(request, post_id):
     """
     contest 질문댓글등록
@@ -27,7 +27,7 @@ def comment_create_post(request, post_id):
     context = {'form': form}
     return render(request, 'contest/comment_form.html', context)
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def comment_modify_post(request, comment_id):
     """
     contest 질문댓글수정
@@ -51,7 +51,7 @@ def comment_modify_post(request, comment_id):
     context = {'form': form}
     return render(request, 'contest/comment_form.html', context)
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def comment_delete_post(request, comment_id):
     """
     contest 질문댓글삭제

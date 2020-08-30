@@ -12,7 +12,7 @@ from django.utils import timezone
 from ..forms import QuestionForm
 from ..models import Question
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def question_create(request):
     """
     academic 질문등록
@@ -33,7 +33,7 @@ def question_create(request):
     context = {'form': form}
     return render(request, 'academic/question_form.html', context)
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def question_modify(request, question_id):
     """
     academic 질문수정
@@ -64,7 +64,7 @@ def question_modify(request, question_id):
     context={'form': form}
     return render(request, 'academic/question_form.html', context)
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def question_delete(request, question_id):
     """
     academic 질문삭제
@@ -76,7 +76,7 @@ def question_delete(request, question_id):
     question.delete()
     return redirect('academic:list')
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def question_download_view(request, pk):
     question = get_object_or_404(Question, pk=pk)
     url = question.upload_files.url[1:]

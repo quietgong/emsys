@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, redirect
 
 from ..models import Post
 
-@login_required(login_url='common:login')
+@login_required(login_url='accounts:login')
 def vote_post(request, post_id):
     """
     actvity 추천등록
