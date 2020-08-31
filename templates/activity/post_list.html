@@ -2,28 +2,27 @@
 {% load activity_filter %}
 {% block content %}
 <div class="slider_area slider_bg_1">
-  <div class="slider_text">
-    <div class="container">
-      <div class="position_relv">
-        <div class="row">
-          <div class="col-xl-8">
-            <div class="title_text title_text2 ">
-              <h3>동아리 활동사진</h3>
+    <div class="slider_text">
+        <div class="container">
+            <div class="position_relv">
+                <div class="row">
+                    <div class="col-xl-8">
+                        <div class="title_text title_text2 ">
+                            <h3>동아리 활동사진</h3>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
 <div class="container my-3">
     <div class="row justify-content-between my-3">
-        <div class="col-2">
+        <div class="col-4">
             <select class="form-control so">
                 <option value="recent" {% if so == 'recent' %}selected{% endif %}>최신순</option>
                 <option value="recommend" {% if so == 'recommend' %}selected{% endif %}>추천순</option>
-                <option value="popular" {% if so == 'popular' %}selected{% endif %}>인기순</option>
                 <option value="history" {% if so == 'history' %}selected{% endif %}>과거순</option>
             </select>
         </div>
@@ -32,54 +31,44 @@
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="button" id="btn_search">찾기</button>
             </div>
-        </div>
-    </div>
-    <table class="table">
-        <thead>
-        <tr class="text-center thead-dark">
-            <th>번호</th>
-            <th>추천</th>
-            <th style="width:50%">제목</th>
-            <th>글쓴이</th>
-            <th>작성일시</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% if post_list %}
-        {% for post in post_list %}
-        <tr class="text-center">
-            <td>
-                <!-- 번호 = 전체건수 - 시작인덱스 - 현재인덱스 + 1 -->
-                {{post_list.paginator.count|sub:post_list.start_index|sub:forloop.counter0|add:1}}
-            </td>
-            <td>
-                <!-- 추천수 표시 -->
-                {% if post.voter.all.count > 0 %}
-                <span class="badge badge-warning px-2 py-1">{{post.voter.all.count}}</span>
-                {% endif %}
-            </td>
-            <td class="text-left">
-                 <!-- 제목 표시 -->
-                <a href="{% url 'activity:detail' post.id %}">{{ post.subject }}</a>
-                {% if post.upload_files %}
-                <img src = "{{post.upload_files.url}}" width="50%", height="50%">
-                {% endif %}
 
-            </td>
-            <td>
-                <!-- 글쓴이 표시 -->
-                {{ post.author.username }}</td>
-                <!-- 작성일지 표시 -->
-            <td>{{ post.create_date }}</td>
-        </tr>
-        {% endfor %}
-        {% else %}
-        <tr>
-            <td colspan="3">글이 없습니다.</td>
-        </tr>
-        {% endif %}
-        </tbody>
-    </table>
+        </div>
+
+    </div>
+    <div class="button-group-area mt-10">
+        <a href="{% url 'activity:post_create' %}" class="genric-btn primary-border e-large">글쓰기<span class="lnr lnr-arrow-right"></span></a>
+    </div>
+
+    {% for post in post_list %}
+    <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="blog_left_sidebar">
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                {% if post.upload_files %}
+                                <img class="card-img rounded-0" src = "{{post.upload_files.url}}">
+                                {% endif %}
+                            </div>
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="{% url 'activity:detail' post.id %}">
+                                    <h2>{{post.subject}}</h2>
+                                </a>
+                                <p>{{post.content}}</p>
+                                <ul>
+                                    <li><i class="fa fa-user"></i>작성자 : {{post.author.username}}</li>
+                                    <li><i class="fa fa-comments"></i>추천수 : {{post.voter.all.count}}</li>
+                                    <li><i class="fa fa-comments"></i>작성일시 : {{post.create_date}}</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
 
     <!-- 페이징처리 시작 -->
     <ul class="pagination justify-content-center">
@@ -119,7 +108,6 @@
         {% endif %}
     </ul>
     <!-- 페이징처리 끝 -->
-    <a href="{% url 'activity:post_create' %}" class="btn btn-primary">글쓰기</a>
 </div>
 <form id="searchForm" method="get" action="{% url 'activity:list' %}">
     <input type="hidden" id="kw" name="kw" value="{{kw|default_if_none:''}}">

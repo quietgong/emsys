@@ -23,8 +23,8 @@
                   </li>
                   <li><a href="{% url 'notice_sw:list'%}">공지사항 <i class="ti-angle-down"></i></a>
                     <ul class="submenu">
-                      <li><a href="{% url 'notice_sw:list'%}">소프트웨어 학과</a></li>
-                      <li><a href="{% url 'notice_sw7up:index'%}">소중 사업단</a></li>
+                      <li><a href="https://software.cbnu.ac.kr/bbs/bbs.php?db=notice&pgID=ID12415888101">소프트웨어 학과</a></li>
+                      <li><a href="{% url 'notice_sw7up:index' %}">소중 사업단</a></li>
                     </ul>
                   </li>
                   <li><a href="{% url 'activity:list'%}">동아리 활동</a></li>
@@ -35,8 +35,7 @@
                     </ul>
                   </li>
                   {% if user.is_authenticated %}
-                  <li><a href="{% url 'accounts:logout'%}">로그아웃</a></li>
-                  <li><a href="{% url 'accounts:password_edit'%}">마이페이지</a></li>
+                  <li><a href="{% url 'accounts:password_edit'%}">마이페이지({{user.username}})</a></li>
                   {% endif %}
                 </ul>
               </nav>
@@ -44,7 +43,11 @@
           </div>
           <div class="col-xl-2 col-lg-2 d-none d-lg-block">
             <div class="buy_ticket">
-              <a href="{% url 'accounts:login'%}" class="boxed-btn-white">Sign in / up</a>
+              {% if user.is_authenticated %}
+              <a href="{% url 'accounts:logout'%}" class="boxed-btn-white">Logout</a>
+              {% else %}
+              <a href="{% url 'accounts:login'%}" class="boxed-btn-white">Login</a>
+              {% endif %}
             </div>
           </div>
           <div class="col-12">
