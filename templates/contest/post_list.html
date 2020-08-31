@@ -38,7 +38,7 @@
         <thead>
         <tr class="text-center table-row">
             <th>번호</th>
-            <th>추천</th>
+
             <th>제목</th>
             <th>글쓴이</th>
             <th>작성일시</th>
@@ -52,12 +52,7 @@
                 <!-- 번호 = 전체건수 - 시작인덱스 - 현재인덱스 + 1 -->
                 {{post_list.paginator.count|sub:post_list.start_index|sub:forloop.counter0|add:1}}
             </td>
-            <td>
-                <!-- 추천수 표시 -->
-                {% if post.voter.all.count > 0 %}
-                <span class="badge badge-warning px-2 py-1">{{post.voter.all.count}}</span>
-                {% endif %}
-            </td>
+            
             <td class="text-center">
                  <!-- 제목 표시 -->
                 <a href="{% url 'contest:detail' post.id %}">{{ post.subject }}</a>
