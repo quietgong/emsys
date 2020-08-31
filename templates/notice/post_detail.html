@@ -30,13 +30,14 @@
                         </div>
                     </div>
                     {% if post.upload_files %}
-                        <div class="col-12 text-right">
-                            <span>첨부파일 :&nbsp;</span>
-                            <a href="{% url 'notice:notice_download' post.id %}" >{{ post.filename}}</a>
-                        </div>
-                        {% endif %}
+                    <div class="col-12 text-right">
+                        <span>첨부파일 :&nbsp;</span>
+                        <a href="{% url 'notice:notice_download' post.id %}" >{{ post.filename}}</a>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
-    {% endblock %}
+</div>
+{% endblock %}

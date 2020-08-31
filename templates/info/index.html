@@ -1,102 +1,121 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<h1>메인 Page입니다.</h1>
-
-<section>
-    {% if user.is_authenticated %}
-    <h1 style="color:blue">{{user.username}}님, 안녕하세요!</h1>
-    {% endif %}
-</section>
-
-<!-- One -->
-<section>
-    <div>
-        <div>
-            <article>
-                <header>
-                    <h3>Emsys<br /> aliquam veroeros</h3>
-                </header>
-                <p>뭐라 씨부릴지 모르겠다..</p>
-                <footer>
-                    <a href="#" class="button special">More</a>
-                </footer>
-            </article>
-            <article>
-                <header>
-                    <h3>소프트웨어학과 공지사항</h3>
-                </header>
-                <table>
-                    <tbody>
-                    <tr>
-                        <td>Ante turpis integer aliquet porttitor.</td>
-                    </tr>
-                    <tr>
-                        <td>Ante turpis integer aliquet porttitor.</td>
-                    </tr>
-                    <tr>
-                        <td>Ante turpis integer aliquet porttitor.</td>
-                    </tr>
-                    <tr>
-                        <td>Ante turpis integer aliquet porttitor.</td>
-                    </tr>
-                    <tr>
-                        <td>Ante turpis integer aliquet porttitor.</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <footer>
-                    <a href="swnotice.html" class="button special">More</a>
-                </footer>
-            </article>
-            <article>
-                <header>
-                    <h3>소중사업단 공지사항</h3>
-                </header>
-                <table>
-                    <tbody>
-                    <tr>
-                        <td>Ante turpis integer aliquet porttitor.</td>
-                    </tr>
-                    <tr>
-                        <td>Ante turpis integer aliquet porttitor.</td>
-                    </tr>
-                    <tr>
-                        <td>Ante turpis integer aliquet porttitor.</td>
-                    </tr>
-                    <tr>
-                        <td>Ante turpis integer aliquet porttitor.</td>
-                    </tr>
-                    <tr>
-                        <td>Ante turpis integer aliquet porttitor.</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <footer>
-                    <a href="sw7upnotice.html" >More</a>
-                </footer>
-            </article>
-        </div>
-    </div>
-</section>
-
-<footer >
-   <div>
-       <div>
-           <div>
-                &copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
+<div class="slider_area slider_bg_1">
+  <div class="slider_text">
+    <div class="container">
+      <div class="position_relv">
+        <div class="row">
+          <div class="col-xl-8">
+            <div class="title_text title_text2 ">
+              <h3>EMSYS</h3>
             </div>
-            <ul>
-                <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                <li><a href="#" class="icon fa-linkedin"><span class="label">linkedIn</span></a></li>
-                <li><a href="#" class="icon fa-pinterest-p"><span class="label">Pinterest</span></a></li>
-                <li><a href="#" class="icon fa-vimeo"><span class="label">Vimeo</span></a></li>
-            </ul>
+          </div>
         </div>
+      </div>
     </div>
-</footer>
+  </div>
+</div>
 
-</body>
-</html>
+<div class="about_area">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-xl-6 col-md-6">
+        <div class="about_thumb">
+          <img src="{% static 'img/about/about.jpg' %}" alt="">
+        </div>
+      </div>
+      <div class="col-xl-5 offset-xl-1 col-md-6">
+        <div class="about_info">
+          <div class="section_title">
+            <h3>충북대학교 <br>
+              임베디드 동아리 <br>
+              엠시스입니다</h3>
+          </div>
+          <p><strong>충북대학교 소프트웨어학과 학술동아리</strong>로서<br>
+            동아리 회원들의 학업 능력 증진을 위한 스터디를 시행하며,
+            <br>안드로이드 애플리케이션 개발과 아두이노, 드론 제작 및 연구를 진행하여 학부생으로서 학업 외 활동들을 동아리를 통해 경험할 수 있습니다. 그 외에도 소프트웨어 경진대회를 통해 프로그래밍과 코딩 능력을 기르며 동아리 회원들끼리의 대외활동과 MT, 선후배 체육대회 등을 통해 사회 경험과 친목을 다질 수 있는 동아리입니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="speakers_area">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="serction_title_large mb-95">
+          <h3>주요 연구 분야</h3><br><br><br>
+          <h4>C/C++,C#,Java 등의 프로그래밍 언어를 사용한 <br>소프트웨어, 안드로이드 어플리케이션 개발 및 아두이노, 드론 연구</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="speakers_area">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="serction_title_large mb-95">
+          <h3>
+            임원 소개
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-5 col-md-6">
+        <div class="single_speaker">
+          <div class="speaker_name text-center">
+            <h1>오홍석</h1>
+            <p>동아리 회장</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-5 col-md-6">
+        <div class="single_speaker">
+          <div class="speaker_name text-center">
+            <h1>한서영</h1>
+            <p>동아리 부회장</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-5 col-md-6">
+        <div class="single_speaker">
+          <div class="speaker_name text-center">
+            <h1>송유현</h1>
+            <p>교육부장</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-5 col-md-6">
+        <div class="single_speaker">
+          <div class="speaker_name text-center">
+            <h1>신한솔</h1>
+            <p>기획부장</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="speakers_area">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="serction_title_large mb-95">
+          <h3>
+            주요 활동 및 수상 실적
+          </h3>
+          <br></br>
+          <img src="{% static 'img/prize.jpg' %}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

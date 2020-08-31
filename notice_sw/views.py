@@ -1,7 +1,5 @@
 from django.shortcuts import render
-
 from notice_sw.models import Post
-
 
 def list(request):
     """
@@ -15,4 +13,4 @@ def detail(request, post_id):
     """
     학과 공지 내용 출력
     """
-    return render(request, 'notice_sw/post_detail.html', context)
+    return render(request, 'notice_sw/post_detail.html')

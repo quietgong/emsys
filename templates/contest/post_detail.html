@@ -43,10 +43,10 @@
                     </div>
                     {% endif %}
                     {% if post.upload_files %}
-                        <div class="col-12 text-right">
-                            <span>첨부파일 :&nbsp;</span>
-                            <a href="{% url 'activity:post_download' post.id %}" >{{ post.filename|truncatechars:100 }}</a>
-                        </div>
+                    <div class="col-12 text-right">
+                        <span>첨부파일 :&nbsp;</span>
+                        <a href="{% url 'activity:post_download' post.id %}" >{{ post.filename|truncatechars:100 }}</a>
+                    </div>
                     <img src = "{{post.upload_files.url}}" width="50%", height="50%">
                     {% endif %}
                 </div>
@@ -79,9 +79,10 @@
             </div>
         </div>
     </div>
-    {% endblock %}
-    {% block script %}
-    <script type="text/javascript">
+</div>
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
     $(document).ready(function(){
     $(".delete").on('click', function() {
         if(confirm("정말로 삭제하시겠습니까?")) {
@@ -95,4 +96,4 @@
     });
 });
 </script>
-    {% endblock %}
+{% endblock %}

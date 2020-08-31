@@ -8,6 +8,14 @@ from django.shortcuts import render, get_object_or_404
 
 from info.models import Post
 
+def index(request):
+    """
+    info 목록 출력
+    """
+    post_list = Post.objects.order_by('-create_date')
+    context = {'post_list': post_list}
+    return render(request, 'info/post_list.html', context)
+
 def list(request):
     """
     info 목록 출력
