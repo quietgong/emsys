@@ -1,12 +1,12 @@
-from django.contrib import messages
-from django.contrib.auth import authenticate, login, update_session_auth_hash
+from django.contrib import auth
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.hashers import check_password
+from django.contrib.auth.models import User
 from django.contrib.auth.views import PasswordResetView
 from django.shortcuts import render, redirect
-from accounts.forms import UserForm
-from django.contrib.auth.models import User
 
-from accounts.forms import CustomPasswordChangeForm
+from accounts.forms import UserForm
 
 def signup(request):
     """
@@ -52,14 +52,21 @@ class UserPasswordResetView(PasswordResetView):
 
 @login_required(login_url='accounts:login')
 def password_edit_view(request):
-    if request.method == 'POST':
-        password_change_form = CustomPasswordChangeForm(request.user, request.POST)
-        if password_change_form.is_valid():
-            user = password_change_form.save()
-            update_session_auth_hash(request, user)
-            messages.success(request, "비밀번호를 성공적으로 변경하였습니다.")
-            return redirect('info:index')
-    else:
-        password_change_form = CustomPasswordChangeForm(request.user)
+    context = {}
+    if request.method == "POST":
+        current_password = request.POST.get("origin_password")
+        user = request.user
+        if check_password(current_password,user.password):
+            new_password = request.POST.get("password1")
+            password_confirm = request.POST.get("password2")
+            if new_password == password_confirm:
+                user.set_password(new_password)
+                user.save()
+                auth.login(request,user)
+                return redirect("account:home")
+            else:
+                context.update({'error':"새로운 비밀번호를 다시 확인해주세요."})
+        else:
+            context.update({'error':"현재 비밀번호가 일치하지 않습니다."})
 
-    return render(request, 'accounts/change_pw.html', {'password_change_form':password_change_form})
+    return render(request, "accounts/change_pw.html", context)

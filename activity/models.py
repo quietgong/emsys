@@ -4,7 +4,6 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 
-
 class Post(models.Model):
     subject = models.CharField(max_length=200)
     content = models.TextField()
@@ -22,9 +21,17 @@ class Post(models.Model):
     def __str__(self):
         return self.subject
 
+class Answer(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    content = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Activity_author_answer')
+    create_date = models.DateTimeField()
+    modify_date = models.DateTimeField(null=True, blank=True)
+    voter = models.ManyToManyField(User, related_name='Activity_voter_answer')  # voter 추가
+
 class Comment(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='activity_comment_author')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Activity_comment_author')
     content = models.TextField()
     create_date = models.DateTimeField()
     modify_date = models.DateTimeField(null=True, blank=True)
-    question = models.ForeignKey(Post, null=True, blank=True, on_delete=models.CASCADE)
+    answer = models.ForeignKey(Answer, null=True, blank=True, on_delete=models.CASCADE)

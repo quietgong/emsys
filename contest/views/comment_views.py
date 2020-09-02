@@ -4,39 +4,39 @@ from django.shortcuts import render, get_object_or_404, redirect, resolve_url
 from django.utils import timezone
 
 from ..forms import CommentForm
-from ..models import Post, Comment
+from ..models import Answer, Comment
 
 @login_required(login_url='accounts:login')
-def comment_create_post(request, post_id):
+def comment_create(request, answer_id):
     """
-    contest 질문댓글등록
+    contest 답글등록
     """
-    post = get_object_or_404(Post, pk=post_id)
+    answer = get_object_or_404(Answer, pk=answer_id)
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.author = request.user
             comment.create_date = timezone.now()
-            comment.post = post
+            comment.answer = answer
             comment.save()
             return redirect('{}#comment_{}'.format(
-                resolve_url('contest:detail', post_id=comment.post.id), comment.id))
+                resolve_url('contest:detail', post_id=comment.answer.post.id), comment.id))
     else:
         form = CommentForm()
     context = {'form': form}
     return render(request, 'contest/comment_form.html', context)
 
+
 @login_required(login_url='accounts:login')
-def comment_modify_post(request, comment_id):
+def comment_modify(request, comment_id):
     """
-    contest 질문댓글수정
+    contest 답글수정
     """
     comment = get_object_or_404(Comment, pk=comment_id)
     if request.user != comment.author:
         messages.error(request, '댓글수정권한이 없습니다')
-        return redirect('{}#comment_{}'.format(
-            resolve_url('contest:detail', post_id=comment.post.id), comment.id))
+        return redirect('contest:detail', post_id=comment.answer.post.id)
 
     if request.method == "POST":
         form = CommentForm(request.POST, instance=comment)
@@ -45,21 +45,23 @@ def comment_modify_post(request, comment_id):
             comment.author = request.user
             comment.modify_date = timezone.now()
             comment.save()
-            return redirect('contest:detail', post_id=comment.post.id)
+            return redirect('{}#comment_{}'.format(
+                resolve_url('contest:detail', post_id=comment.answer.post.id), comment.id))
     else:
         form = CommentForm(instance=comment)
     context = {'form': form}
     return render(request, 'contest/comment_form.html', context)
 
+
 @login_required(login_url='accounts:login')
-def comment_delete_post(request, comment_id):
+def comment_delete(request, comment_id):
     """
-    contest 질문댓글삭제
+    contest 답글삭제
     """
     comment = get_object_or_404(Comment, pk=comment_id)
     if request.user != comment.author:
         messages.error(request, '댓글삭제권한이 없습니다')
-        return redirect('contest:detail', post_id=comment.post_id)
+        return redirect('contest:detail', post_id=comment.answer.post.id)
     else:
         comment.delete()
-    return redirect('contest:detail', post_id=comment.post_id)
+    return redirect('contest:detail', post_id=comment.answer.post.id)

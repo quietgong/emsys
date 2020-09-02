@@ -30,7 +30,7 @@ def list(request):
         ).distinct()
 
     # 페이징처리
-    paginator = Paginator(post_list, 10) # 페이지당 10개씩 보여주기
+    paginator = Paginator(post_list, 5) # 페이지당 5개씩 보여주기
     page_obj = paginator.get_page(page)
 
     context = {'post_list': page_obj, 'page': page, 'kw': kw, 'so': so} # page, kw, so가 추가되었다.

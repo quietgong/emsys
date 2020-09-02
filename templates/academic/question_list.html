@@ -56,9 +56,10 @@
 
             <td class="text-center">
                 <!-- 제목 표시 -->
-                <a href="{% url 'academic:detail' question.id %}">{{ question.subject }}{% if question.voter.all.count > 0 %}
-                <span class="badge badge-warning px-2 py-1">{{question.voter.all.count}}</span>
-                {% endif %}</a>
+                <a href="{% url 'academic:detail' question.id %}">{{ question.subject }}
+                    {% if question.voter.all.count > 0 %}
+                    <span class="badge badge-warning px-2 py-1"><i class="fa fa-thumbs-up">{{question.voter.all.count}}</i></span>
+                    {% endif %}</a>
                 {% if question.answer_set.count > 0 %}
                 <span class="text-danger small ml-2">{{question.answer_set.count}}</span>
                 {% endif %}

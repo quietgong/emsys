@@ -23,8 +23,9 @@
                   </li>
                   <li><a href="{% url 'notice_sw:list'%}">공지사항 <i class="ti-angle-down"></i></a>
                     <ul class="submenu">
-                      <li><a href="https://software.cbnu.ac.kr/bbs/bbs.php?db=notice&pgID=ID12415888101">소프트웨어 학과</a></li>
-                      <li><a href="{% url 'notice_sw7up:index' %}">소중 사업단</a></li>
+                      <li><a href="{% url 'notice:index'%}">엠시스</a></li>
+                      <li><a href="https://software.cbnu.ac.kr/bbs/bbs.php?db=notice&pgID=ID12415888101">소프트웨어 학과<br>(크롤링 기능 준비중...)</a></li>
+                      <li><a href="{% url 'notice_sw7up:index' %}">소중 사업단<br>(크롤링 기능 준비중...)</a></li>
                     </ul>
                   </li>
                   <li><a href="{% url 'activity:list'%}">동아리 활동</a></li>
@@ -35,7 +36,7 @@
                     </ul>
                   </li>
                   {% if user.is_authenticated %}
-                  <li><a href="{% url 'accounts:password_edit'%}">마이페이지({{user.username}})</a></li>
+                  <li><a href="{% url 'accounts:change_password'%}">마이페이지({{user.username}})</a></li>
                   {% endif %}
                 </ul>
               </nav>

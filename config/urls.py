@@ -19,16 +19,18 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', start_views.index, name='index'),
                   path('intro', start_views.intro, name='intro'),
+
                   url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
                   url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
+
                   # 비밀번호 찾기
-                  path('reset_password/', auth_views.PasswordResetView.as_view(template_name="reset_password.html"),
+                  path('accounts/reset_password/', auth_views.PasswordResetView.as_view(template_name="accounts/reset_password.html"),
                        name="reset_password"),
-                  path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name="reset_password_done.html"),
+                  path('accounts/reset_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name="accounts/reset_password_done.html"),
                        name="password_reset_done"),
-                  path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="reset_password_confirm.html"),
+                  path('accounts/reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="accounts/reset_password_confirm.html"),
                        name="password_reset_confirm"),
-                  path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name="reset_password_complete.html"),
+                  path('accounts/reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name="accounts/reset_password_complete.html"),
                        name="password_reset_complete"),
               ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 handler404 = 'accounts.views.page_not_found'

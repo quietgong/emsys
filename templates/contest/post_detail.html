@@ -1,8 +1,23 @@
 {% extends 'base.html' %}
-{% load activity_filter %}
+{% load contest_filter %}
 {% block content %}
-<div class="container my-3">
-    <!-- 사용자오류 표시 -->
+<div class="slider_area slider_bg_1">
+    <div class="slider_text">
+        <div class="container">
+            <div class="position_relv">
+                <div class="row">
+                    <div class="col-xl-8">
+                        <div class="title_text title_text2 ">
+                            <h3>공모전</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
     {% if messages %}
     <div class="alert alert-danger my-3" role="alert">
         {% for message in messages %}
@@ -11,71 +26,138 @@
         {% endfor %}
     </div>
     {% endif %}
-    <h2 class="border-bottom py-2">{{ post.subject }}</h2>
-    <div class="row my-3">
-        <div class="col-1"> <!-- 추천영역 -->
-            <div class="bg-light text-center p-3 border font-weight-bolder mb-1">{{post.voter.count}}</div>
-            <a href="#" data-uri="{% url 'activity:vote_post' post.id  %}"
-               class="recommend btn btn-sm btn-secondary btn-block my-1">추천</a>
-        </div>
-        <div class="col-11"> <!-- 질문영역 -->
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-text">{{post.content|mark}}</div>
-                    <div class="d-flex justify-content-end">
-                        {% if post.modify_date %}
-                        <div class="badge badge-light p-2 text-left mx-3">
-                            <div class="mb-2">modified at</div>
-                            <div>{{post.modify_date}}</div>
-                        </div>
+    <div class="row">
+        <div class="col-12 posts-list">
+            <!-- 질문내용 -->
+            <div class="single-post">
+                <div class="blog_details">
+                    <div class="feature-img">
+                        {% if post.upload_files %}
+                        <img src = "{{post.upload_files.url}}" width="50%", height="50%">
                         {% endif %}
-                        <div class="badge badge-light p-2 text-left">
-                            <div class="mb-2">{{post.author.username}}</div>
-                            <div>{{post.create_date}}</div>
-                        </div>
                     </div>
+                    <h2>{{post.subject}}</h2>
+                    <ul class="blog-info-link mt-3 mb-4">
+                        <li><i class="fa fa-user"></i>{{post.author.username}}</li>
+                        <li><i class="fa fa-table"></i>
+                            {% if post.modify_date %}
+                            (수정됨){{post.modify_date}}
+                            {% else %}
+                            {{post.create_date}}
+                            {% endif %}
+                        </li>
+                        <li><i class="fa fa-thumbs-up"></i>{{post.voter.count}}</li>
+                    </ul>
+                    <p class="excert">
+                        {{post.content|mark}}
+                    </p>
                     {% if request.user == post.author %}
-                    <div class="my-3">
-                        <a href="{% url 'activity:post_modify' post.id %}"
-                           class="btn btn-sm btn-outline-secondary">수정</a>
-                        <a href="#" class="delete btn btn-sm btn-outline-secondary"
-                           data-uri = "{% url 'activity:post_delete' post.id %}">삭제</a>
-                    </div>
+                    <a href="{% url 'contest:post_modify' post.id %}"
+                       class="btn btn-sm btn-outline-secondary">수정</a>
+                    <a href="#" class="delete btn btn-sm btn-outline-secondary"
+                       data-uri = "{% url 'contest:post_delete' post.id %}">삭제</a>
+                    {% else %}
+                    {% if post.voter.all.count %}
+                    <a href="{% url 'contest:vote_post' post.id  %}"
+                       class="btn btn-sm btn-outline-secondary recommend">추천 취소</a>
+                    {% else %}
+                    <a href="{% url 'contest:vote_post' post.id  %}"
+                       class="btn btn-sm btn-outline-secondary recommend">추천</a>
                     {% endif %}
-                    {% if post.upload_files %}
-                    <div class="col-12 text-right">
-                        <span>첨부파일 :&nbsp;</span>
-                        <a href="{% url 'activity:post_download' post.id %}" >{{ post.filename|truncatechars:100 }}</a>
-                    </div>
-                    <img src = "{{post.upload_files.url}}" width="50%", height="50%">
                     {% endif %}
+                    <a href="{% url 'contest:list' %}" class="btn btn-sm btn-outline-secondary pull-right">목록</a>
                 </div>
-                <!-- 질문 댓글 Start -->
-                {% if post.comment_set.count > 0 %}
-                <div class="mt-3">
-                    {% for comment in post.comment_set.all %}
-                    <a name="comment_{{comment.id}}"></a>
-                    <div class="comment py-2 text-muted">
-                        <span style="white-space: pre-line;">{{ comment.content }}</span>
-                        <span>
-                - {{ comment.author }}, {{ comment.create_date }}
-                {% if comment.modify_date %}
-                (수정:{{ comment.modify_date }})
-                {% endif %}
-            </span>
-                        {% if request.user == comment.author %}
-                        <a href="{% url 'activity:comment_modify_post' comment.id  %}" class="small">수정</a>,
-                        <a href="#" class="small delete"
-                           data-uri="{% url 'activity:comment_delete_post' comment.id  %}">삭제</a>
+            </div>
+
+            <!--댓글 내용-->
+            <div class="comments-area">
+                {% if post.answer_set.count > 0 %}
+                <h4>[댓글 {{post.answer_set.count}}개가 있어요]</h4>
+                {% for answer in post.answer_set.all %}
+                <a name="answer_{{answer.id}}"></a>
+                <div class="comment-list">
+                    <div class="single-comment justify-content-between d-flex">
+                        <div class="user justify-content-between d-flex">
+                            <div class="desc">
+                                <p class="comment">
+                                    {{answer.content|mark}}
+                                </p>
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <h5>{{answer.author.username}}</h5>
+                                        <p class="date">
+                                            {% if answer.modify_date %}
+                                            (수정됨){{answer.modify_date}}
+                                            {% else %}
+                                            {{answer.create_date}}
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                    <div class="reply-btn">
+                                        <a href="{% url 'contest:comment_create' answer.id  %}" class="btn-reply text-uppercase">답글</a>
+                                    </div>
+                                </div>
+                                {% if request.user == answer.author %}
+                                <a href="{% url 'contest:answer_modify' answer.id %}"
+                                   class="btn btn-sm btn-outline-secondary">수정</a>
+                                <a href="#" class="delete btn btn-sm btn-outline-secondary"
+                                   data-uri = "{% url 'contest:answer_delete' answer.id %}">삭제</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% for comment in answer.comment_set.all %}
+                    <a name="answer_{{comment.id}}"></a>
+                    <div style="padding:10px;">
+                        <i class="fa fa-reply fa-rotate-180"></i>{{comment.content}}<br>
+                        <h5>{{comment.author.username}}</h5>
+                        <p class="date">
+                            {% if comment.modify_date %}
+                            (수정됨) {{comment.modify_date}}
+                            {% else %}
+                            {{comment.create_date}}
+                            {% endif %}
+                            {% if request.user == comment.author %}
+                            <a href="{% url 'contest:comment_modify' comment.id  %}" class="small">수정</a>,
+                            <a href="#" class="small delete"
+                               data-uri="{% url 'contest:comment_delete' comment.id  %}">삭제</a>
+                            {% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+            {%endif%}
+
+            <div class="col-12 comment-form">
+                <h4>답변 작성하기</h4>
+                <form class="form-contact comment_form" method="post" action="{% url 'contest:answer_create' post.id %}" id="commentForm">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for field in form %}
+                        {% if field.errors %}
+                        <strong>{{field.label}}</strong>
+                        {{field.errors}}
                         {% endif %}
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-                </div>
-                {% endif %}
-                <div>
-                    <a href="{% url 'activity:comment_create_post' post.id  %}"
-                       class="small"><small>댓글 추가 ..</small></a>
-                </div>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                              <textarea {% if not user.is_authenticated %}disabled{% endif %}
+                                        class="form-control w-100" name="content" id="content" cols="30" rows="10"
+                                        placeholder="비방 또는 욕설이 포함된 내용은 관리자에 의해 삭제 될 수 있습니다."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="button button-contactForm btn_1 boxed-btn">작성하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -86,11 +168,6 @@
     $(document).ready(function(){
     $(".delete").on('click', function() {
         if(confirm("정말로 삭제하시겠습니까?")) {
-            location.href = $(this).data('uri');
-        }
-    });
-     $(".recommend").on('click', function() {
-        if(confirm("정말로 추천하시겠습니까?")) {
             location.href = $(this).data('uri');
         }
     });

@@ -13,5 +13,8 @@ def vote_post(request, post_id):
     if request.user == post.author:
         messages.error(request, '본인이 작성한 글은 추천할수 없습니다')
     else:
-        post.voter.add(request.user)
+        if request.user in post.voter.all():
+            post.voter.remove(request.user)
+        else:
+            post.voter.add(request.user)
     return redirect('contest:detail', post_id=post.id)
