@@ -1,26 +1,30 @@
 from django.core.paginator import Paginator
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
-from django.db.models import Q, Count
+
 from ..models import Post
+
 
 def list(request):
     """
-    activity 목록 출력
+    study 목록 출력
     """
     # 입력 파라미터
     page = request.GET.get('page', '1') # 페이지
     kw = request.GET.get('kw', '') # 검색어
-    so = request.GET.get('so', 'recent') # 정렬기준
+    so = request.GET.get('so', '공통') # 정렬기준
 
     # 정렬
-    if so == 'recommend':
-        post_list = Post.objects.annotate(num_voter=Count('voter')).order_by('-num_voter', '-create_date')
-    elif so == 'popular':
-        post_list = Post.objects.annotate(num_answer=Count('answer')).order_by('-num_answer', '-create_date')
-    elif so == 'history':
-        post_list = Post.objects.order_by('create_date')
-    else:  # recent
-        post_list = Post.objects.order_by('-create_date')
+    if so == '공통':
+        post_list = Post.objects.filter(grade='공통')
+    elif so == '1학년':
+        post_list = Post.objects.filter(grade='1학년')
+    elif so == '2학년':
+        post_list = Post.objects.filter(grade='2학년')
+    elif so == '3학년':
+        post_list = Post.objects.filter(grade='3학년')
+    else:
+        post_list = Post.objects.filter(grade='4학년')
 
     # 검색
     if kw:
@@ -37,12 +41,12 @@ def list(request):
 
     context = {'post_list': page_obj, 'page': page, 'kw': kw, 'so': so} # page, kw, so가 추가되었다.
 
-    return render(request, 'activity/post_list.html', context)
+    return render(request, 'study/post_list.html', context)
 
 def detail(request, post_id):
     """
-    activity 내용 출력
+    study 내용 출력
     """
     post = get_object_or_404(Post, pk=post_id)
     context = {'post': post}
-    return render(request, 'activity/post_detail.html', context)
+    return render(request, 'study/post_detail.html', context)

@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import base_views, post_views, comment_views, vote_views, answer_views
 
-app_name = 'activity'
+app_name = 'study'
 
 urlpatterns = [
 

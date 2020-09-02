@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="slider_area slider_bg_1">
+    <div class="slider_text">
+        <div class="container">
+            <div class="position_relv">
+                <div class="row">
+                    <div class="col-xl-8">
+                        <div class="title_text title_text2 ">
+                            <h3>회원가입</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container my-3">
     <div class="row my-3">
         <div class="col-4">
@@ -13,7 +28,7 @@
         {% csrf_token %}
         {% include "form_errors.html" %}
         <div class="form-group">
-            <label for="username">이름</label>
+            <label for="username">ID</label>
             <input type="text" class="form-control" name="username" id="username"
                    value="{{ form.username.value|default_if_none:'' }}">
         </div>
@@ -29,7 +44,7 @@
         </div>
         <div class="form-group">
             <label for="email">이메일</label>
-            <input type="text" class="form-control" name="email" id="email"
+            <input type="text" class="form-control" name="email" id="email" placeholder="비밀번호를 찾을때 사용됩니다."
                    value="{{ form.email.value|default_if_none:'' }}">
         </div>
         <button type="submit" class="btn btn-primary">생성하기</button>

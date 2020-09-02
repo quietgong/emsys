@@ -3,15 +3,15 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect, resolve_url
 from django.utils import timezone
 
-from ..forms import QuestionForm, AnswerForm
-from ..models import Question, Answer
+from ..forms import PostForm, AnswerForm
+from ..models import Post, Answer
 
 @login_required(login_url='accounts:login')
-def answer_create(request, question_id):
+def answer_create(request, post_id):
     """
-    academic 답변등록
+    study 답변등록
     """
-    question = get_object_or_404(Question, pk=question_id)
+    post = get_object_or_404(Post, pk=post_id)
 
     if request.method == "POST":
         form = AnswerForm(request.POST)
@@ -19,24 +19,24 @@ def answer_create(request, question_id):
             answer = form.save(commit=False)
             answer.create_date = timezone.now()
             answer.author = request.user
-            answer.question = question
+            answer.post = post
             answer.save()
             return redirect('{}#answer_{}'.format(
-                resolve_url('academic:detail', question_id=question.id), answer.id))
+                resolve_url('study:detail', post_id=post.id), answer.id))
     else:
         form = AnswerForm()
-    context = {'question': question, 'form': form}
-    return render(request, 'academic/post_detail.html', context)
+    context = {'post': post, 'form': form}
+    return render(request, 'study/post_detail.html', context)
 
 @login_required(login_url='accounts:login')
 def answer_modify(request, answer_id):
     """
-    academic 답변수정
+    study 답변수정
     """
     answer = get_object_or_404(Answer, pk=answer_id)
     if request.user != answer.author:
         messages.error(request, '수정 권한이 없습니다.')
-        return redirect('academic:detail', question_id=answer.question.id)
+        return redirect('study:detail', post_id=answer.post.id)
 
     if request.method == "POST":
         form = AnswerForm(request.POST, instance=answer)
@@ -46,20 +46,20 @@ def answer_modify(request, answer_id):
             answer.modify_date = timezone.now()
             answer.save()
             return redirect('{}#answer_{}'.format(
-                resolve_url('academic:detail', question_id=answer.question.id), answer.id))
+                resolve_url('study:detail', post_id=answer.post.id), answer.id))
     else:
-        form = QuestionForm(instance=answer)
+        form = PostForm(instance=answer)
     context={'answer': answer, 'form': form}
-    return render(request, 'academic/answer_form.html', context)
+    return render(request, 'study/answer_form.html', context)
 
 @login_required(login_url='accounts:login')
 def answer_delete(request, answer_id):
     """
-    academic 답변삭제
+    study 답변삭제
     """
     answer = get_object_or_404(Answer, pk=answer_id)
     if request.user != answer.author:
         messages.error(request, '삭제 권한이 없습니다.')
     else:
         answer.delete()
-    return redirect('academic:detail', question_id=answer.question.id)
+    return redirect('study:detail', post_id=answer.post.id)

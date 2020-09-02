@@ -29,14 +29,17 @@
                     </ul>
                   </li>
                   <li><a href="{% url 'activity:list'%}">동아리 활동</a></li>
-                  <li><a href="{% url 'academic:list'%}">자료실 <i class="ti-angle-down"></i></a>
+                  <li><a href="{% url 'study:list'%}">자료실 <i class="ti-angle-down"></i></a>
                     <ul class="submenu">
-                      <li><a href="{% url 'academic:list'%}">햑술 자료</a></li>
+                      <li><a href="{% url 'study:list'%}">햑술 자료</a></li>
                       <li><a href="{% url 'contest:list'%}">공모전 자료</a></li>
                     </ul>
                   </li>
                   {% if user.is_authenticated %}
-                  <li><a href="{% url 'accounts:change_password'%}">마이페이지({{user.username}})</a></li>
+                  <li><a href="{% url 'accounts:change_password'%}">마이페이지</a></li>
+                  <li><a href="{% url 'accounts:logout'%}">로그아웃({{user.username}})</a></li>
+                  {% else %}
+                  <li><a href="{% url 'accounts:login'%}">로그인</a></li>
                   {% endif %}
                 </ul>
               </nav>

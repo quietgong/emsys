@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load info_filter %}
 {% block content %}
 <div class="slider_area slider_bg_1">
     <div class="slider_text">
@@ -15,40 +16,36 @@
         </div>
     </div>
 </div>
-<div class="container my-3">
-    <!-- 사용자오류 표시 -->
-    {% if messages %}
-    <div class="alert alert-danger my-3" role="alert">
-        {% for message in messages %}
-        <strong>{{message.tags}}</strong>
-        <ul><li>{{message.message}}</li></ul>
-        {% endfor %}
-    </div>
-    {% endif %}
-    <h2 class="border-bottom py-2">{{ post.subject }}</h2>
-    <div class="row my-3">
-        <div class="col-11"> <!-- 질문영역 -->
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-text">{{post.content}}</div>
-                    <div class="d-flex justify-content-end">
-                        {% if post.modify_date %}
-                        <div class="badge badge-light p-2 text-left mx-3">
-                            <div class="mb-2">modified at</div>
-                            <div>{{post.modify_date}}</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="posts-list">
+                <!-- single-post 시작 -->
+                <div class="single-post">
+                    <div class="blog_details">
+                        <h2>{{post.subject}}</h2>
+                        <ul class="blog-info-link mt-3 mb-4">
+                            <li><i class="fa fa-user"></i>{{post.author.username}}</li>
+                            <li><i class="fa fa-table"></i>
+                                {% if post.modify_date %}
+                                (수정됨){{post.modify_date}}
+                                {% else %}
+                                {{post.create_date}}
+                                {% endif %}
+                            </li>
+                        </ul>
+                        <p class="excert">
+                            {{post.content|mark}}
+                        </p>
+                        {% if post.upload_files %}
+                        <div>
+                            <span>다운로드 :&nbsp;</span>
+                            <a href="{% url 'info:info_download' post.id %}" >{{ post.filename}}</a>
                         </div>
                         {% endif %}
-                        <div class="badge badge-light p-2 text-left">
-                            <div class="mb-2">{{post.author.username}}</div>
-                            <div>{{post.create_date}}</div>
-                        </div>
+                        <a href="{% url 'info:list' %}" class="btn btn-sm btn-outline-secondary pull-right">목록</a>
                     </div>
-                    {% if post.upload_files %}
-                    <div class="col-12 text-right">
-                        <span>첨부파일 :&nbsp;</span>
-                        <a href="{% url 'info:info_download' post.id %}" >{{ post.filename}}</a>
-                    </div>
-                    {% endif %}
                 </div>
             </div>
         </div>

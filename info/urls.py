@@ -9,4 +9,5 @@ urlpatterns = [
     path('list', views.list, name='list'),
     path('<int:post_id>/', views.detail, name='detail'),
     path('download/<int:pk>', views.download, name="info_download"),
+    path('sitepolicy', views.sitepolicy, name="sitepolicy")
 ]

@@ -5811,3 +5811,72 @@ h6 {
 }
 
 /*# sourceMappingURL=style.css.map */
+.sign
+{
+  margin-bottom : 25px;
+  margin-right : 0;
+  width : 400px;
+}
+.id
+{
+  float : left;
+}
+
+.btn-default
+{
+  border : 1px solid #0181F5;
+  background-color: white;
+  color : #0181F5;
+  font-size : 14px;
+  margin:0 0 0 10px;
+  height : 48px;
+  border-radius: 0%;
+}
+.btn-default:hover
+{
+  background-color: #0181F5;
+  color : white;
+}
+.policy
+{
+    color : white;
+}
+.policy:hover
+{
+    color : #007bff;
+}
+.slider_area .title_text h3 {
+  font-size: 90px;
+  font-weight: 700;
+  text-transform: capitalize;
+  line-height: 100px;
+  transition: 2s;
+  color: #fff;
+  margin-bottom: 66px;
+  display : inline
+}
+.title_text > .c1:hover
+{
+  color : rgb(170,43,184);
+  transition: 0.15s;
+}
+.title_text > .c2:hover
+{
+  color : red;
+  transition: 0.15s;
+}
+.title_text > .c3:hover
+{
+  color : blue;
+  transition: 0.15s;
+}
+.title_text > .c4:hover
+{
+  color : yellow;
+  transition: 0.15s;
+}
+.title_text > .c5:hover
+{
+  color : green;
+  transition: 0.15s;
+}

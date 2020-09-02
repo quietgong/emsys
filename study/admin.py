@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Question, Answer, Comment
+from .models import Post, Answer, Comment
 
-class QuestionAdmin(admin.ModelAdmin):
+class PostAdmin(admin.ModelAdmin):
     search_fields = ['subject']
-admin.site.register(Question, QuestionAdmin)
+admin.site.register(Post, PostAdmin)
 
 class AnswerAdmin(admin.ModelAdmin):
     search_fields = ['subject']

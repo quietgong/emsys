@@ -8,7 +8,7 @@ from info.basic import start_views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-                  path('academic/', include('academic.urls')),
+                  path('study/', include('study.urls')),
                   path('accounts/', include('accounts.urls')),
                   path('info/', include('info.urls')),
                   path('notice/', include('notice.urls')),

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load activity_filter %}
+{% load study_filter %}
 {% block content %}
 <div class="slider_area slider_bg_1">
     <div class="slider_text">
@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-xl-8">
                         <div class="title_text title_text2 ">
-                            <h3>동아리 갤러리</h3>
+                            <h3>학술자료</h3>
                         </div>
                     </div>
                 </div>
@@ -58,20 +58,20 @@
                         {{post.content|mark}}
                     </p>
                     {% if request.user == post.author %}
-                    <a href="{% url 'activity:post_modify' post.id %}"
+                    <a href="{% url 'study:post_modify' post.id %}"
                        class="btn btn-sm btn-outline-secondary">수정</a>
                     <a href="#" class="delete btn btn-sm btn-outline-secondary"
-                       data-uri = "{% url 'activity:post_delete' post.id %}">삭제</a>
+                       data-uri = "{% url 'study:post_delete' post.id %}">삭제</a>
                     {% else %}
                     {% if post.voter.all.count %}
-                    <a href="{% url 'activity:vote_post' post.id  %}"
+                    <a href="{% url 'study:vote_post' post.id  %}"
                        class="btn btn-sm btn-outline-secondary recommend">추천 취소</a>
                     {% else %}
-                    <a href="{% url 'activity:vote_post' post.id  %}"
+                    <a href="{% url 'study:vote_post' post.id  %}"
                        class="btn btn-sm btn-outline-secondary recommend">추천</a>
                     {% endif %}
                     {% endif %}
-                    <a href="{% url 'activity:list' %}" class="btn btn-sm btn-outline-secondary pull-right">목록</a>
+                    <a href="{% url 'study:list' %}" class="btn btn-sm btn-outline-secondary pull-right">목록</a>
                 </div>
             </div>
             <!--comments-area 시작 -->
@@ -96,14 +96,14 @@
                                         </p>
                                     </div>
                                     <div class="reply-btn">
-                                        <a href="{% url 'activity:comment_create' answer.id  %}" class="btn-reply text-uppercase">답글</a>
+                                        <a href="{% url 'study:comment_create' answer.id  %}" class="btn-reply text-uppercase">답글</a>
                                     </div>
                                 </div>
                                 {% if request.user == answer.author %}
-                                <a href="{% url 'activity:answer_modify' answer.id %}"
+                                <a href="{% url 'study:answer_modify' answer.id %}"
                                    class="btn btn-sm btn-outline-secondary">수정</a>
                                 <a href="#" class="delete btn btn-sm btn-outline-secondary"
-                                   data-uri = "{% url 'activity:answer_delete' answer.id %}">삭제</a>
+                                   data-uri = "{% url 'study:answer_delete' answer.id %}">삭제</a>
                                 {% endif %}
                             </div>
                         </div>
@@ -117,9 +117,9 @@
                         {{comment.create_date}}
                         {% endif %}
                         {% if request.user == comment.author %}
-                        <a href="{% url 'activity:comment_modify' comment.id  %}" class="small">수정</a>,
+                        <a href="{% url 'study:comment_modify' comment.id  %}" class="small">수정</a>,
                         <a href="#" class="small delete"
-                           data-uri="{% url 'activity:comment_delete' comment.id  %}">삭제</a>
+                           data-uri="{% url 'study:comment_delete' comment.id  %}">삭제</a>
                         {% endif %}
                         {% endfor %}
                         {%endfor%}
@@ -129,7 +129,7 @@
             <!-- comment-form 시작 -->
             <div class="comment-form">
                 <h4>답변 작성하기</h4>
-                <form class="form-contact comment_form" method="post" action="{% url 'activity:answer_create' post.id %}"
+                <form class="form-contact comment_form" method="post" action="{% url 'study:answer_create' post.id %}"
                       id="commentForm">
                     {% csrf_token %}
                     {% if form.errors %}

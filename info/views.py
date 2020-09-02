@@ -16,6 +16,9 @@ def index(request):
     context = {'post_list': post_list}
     return render(request, 'info/post_list.html', context)
 
+def sitepolicy(request):
+    return render(request, 'info/sitepolicy.html')
+
 def list(request):
     """
     info 목록 출력
