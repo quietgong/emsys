@@ -5987,3 +5987,68 @@ html , body
 
 /*2020-0903 로그인 화면 css 파일부분 끝 */
 /*******************************/
+
+/*******************************/
+/*회원가입화면 css 파일부분 */
+.create-account-text
+{
+  margin-bottom : 30px;
+}
+.create-account-container
+{
+  background-color : rgba(255,255,255,0.8);
+  border-radius: 15px;
+  padding-top : 30px;
+  height : 800px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
+  width : 750px;
+}
+.create-account-row
+{
+  margin-left : 140px;
+}
+.input-text
+{
+  margin-top : 20px;
+  width : 500px;
+}
+/*계정 생성부분 미디어쿼리*/
+@media (max-width: 767px) {
+  .create-account-container{
+    padding-right: 0;
+    width : 480px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .create-account-container{
+    height : 560px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
+    width : 680px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .create-account-container{
+    height : 580px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
+    width : 650px;
+  }
+}
+/*.create-account-row 미디어쿼리*/
+@media (max-width: 767px) {
+  .create-account-row{
+    margin-left : 140px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .create-account-row{
+    margin-left : 200px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .create-account-row{
+    margin-left : 90px;
+  }
+}
+/*회원가입화면 css 파일부분 끝 */
+/*******************************/
