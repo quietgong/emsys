@@ -38,6 +38,10 @@ for date in bsObject.find_all('td', {"class":'body_num'}):
     post_date.append(date.text.strip())
 post_date = post_date[2::4]
 
+post_order = []
+for total in post_order:
+    post_order.append()
+
 result = []
 for i in range(0, LIMIT):
     post_obj = {

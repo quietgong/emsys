@@ -6053,3 +6053,77 @@ html , body
 }
 /*회원가입화면 css 파일부분 끝 */
 /*******************************/
+
+/*******************************/
+/*비밀번호 찾는부분 css*/
+.find-account-txt > h3
+{
+  font-size : 50px;
+}
+
+.find-account
+{
+  width : 340px;
+  border : none;
+  background : transparent;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+
+}
+.send-email-btn
+{
+  position :relative;
+  top : -60px;
+  left : -30px;
+}
+
+/*미디어쿼리 부분*/
+
+@media (max-width: 767px) {
+  /*컨테이너*/
+  .find-account-container{
+    padding-left : 40px;
+  }
+  /*이메일 입력란*/
+  .find-account
+  {
+    width : 180px;
+  }
+
+  .find-account-txt > h3{
+    font-size : 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /*컨테이너*/
+  .find-account-container{
+    padding-left : 60px;
+  }
+  /*이메일 입력란*/
+  .find-account
+  {
+    width : 240px;
+  }
+    /*비밀번호 찾기 h3 부분*/
+  .find-account-txt > h3{
+    font-size : 30px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  /*컨테이너*/
+  .find-account-container{
+    padding-left : 80px;
+  }
+  /*전송버튼*/
+  .send-email-btn{
+    left : -70px;
+  }
+     /*비밀번호 찾기 h3 부분*/
+  .find-account-txt > h3{
+    font-size : 45px;
+  }
+}
+
+/*비밀번호 찾는부분 css*/
+/*******************************/
