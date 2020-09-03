@@ -7,7 +7,7 @@ import django
 django.setup()
 from notice_sw.models import Post
 
-LIMIT = 10
+LIMIT = 25
 
 html = urlopen("https://software.cbnu.ac.kr/bbs/bbs.php?db=notice")
 bsObject = BeautifulSoup(html, "html.parser")
