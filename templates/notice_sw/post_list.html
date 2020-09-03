@@ -26,11 +26,11 @@
         </thead>
         <tbody>
         {% if post_list %}
-        {% for post in post_list %}
+        {% for post in post_list reversed %}
         <tr>
             <td>{{ forloop.counter }}</td>
             <td>
-                <a href="{{ post.link }}">{{ post.title }}</a>
+                <a href="{% url 'notice_sw:detail' post.id %}">{{ post.title }}</a>
             </td>
 
         </tr>

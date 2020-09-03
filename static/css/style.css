@@ -5880,3 +5880,110 @@ h6 {
   color : green;
   transition: 0.15s;
 }
+
+/*******************************/
+/*로그인 화면 css 파일부분 */
+.input-id, .input-pwd
+{
+  margin-top : 20px;
+  width : 400px;
+}
+.login-btn , .create-btn
+{
+  margin-top : 20px;
+  border-radius: 2%;
+  width : 400px;
+}
+.login-format
+{
+  width : 100%;
+  height : 100%;
+   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+   background-size: 400% 400%;
+   animation: gradient 15s ease infinite;
+}
+html , body
+{
+  width : 100%;
+  height :100%;
+}
+.login-text
+{
+  margin-bottom: 30px;
+}
+.login-container
+{
+  background-color : rgba(255,255,255,0.8);
+  padding : 50px 50px 20px 120px;
+  width : 850px;
+  height : 450px;
+  border-radius: 15px;
+}
+
+@keyframes gradient {
+   0% {
+      background-position: 0% 50%;
+   }
+   50% {
+      background-position: 100% 50%;
+   }
+   100% {
+      background-position: 0% 50%;
+   }
+}
+/***********************************************/
+/*컨테이너 미디어쿼리*/
+@media (max-width: 767px) {
+  .login-container {
+    padding-right: 0;
+    width : 350px;
+    height : 450px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .login-container {
+    padding-right: 0;
+    width : 430px;
+    height : 450px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .login-container {
+    padding-right: 0;
+    width : 600px;
+    height : 460px;
+  }
+}
+
+
+/*로그인 버튼 인풋 텍스트 미디어퀴리*/
+@media (max-width: 767px) {
+  .login-btn , .create-btn, .input-id, .input-pwd{
+    padding-right: 0;
+    width : 150px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .login-btn , .create-btn, .input-id, .input-pwd {
+    padding-right: 0;
+    width : 220px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .login-btn , .create-btn, .input-id, .input-pwd{
+    padding-right: 0;
+  }
+}
+/*텍스트 관련 미디어쿼리 적용*/
+@media (max-width: 767px) {
+  .find-id-pwd{
+    font-size : 10px;
+  }
+}
+
+/*2020-0903 로그인 화면 css 파일부분 끝 */
+/*******************************/

@@ -7,7 +7,7 @@ import django
 django.setup()
 from notice_sw.models import Post
 
-LIMIT = 10
+LIMIT = 1
 
 html = urlopen("https://software.cbnu.ac.kr/bbs/bbs.php?db=notice")
 bsObject = BeautifulSoup(html, "html.parser")
@@ -44,17 +44,16 @@ for i in range(0, LIMIT):
     result.append(post_obj)
 
 # 크롤링한 데이터를 장고 DB에 저장
-db_specific_id = []
+first_inserted_items = Post.objects.first()
+if first_inserted_items is None:
+    first_inserted_specific_id = ""
+else:
+    first_inserted_specific_id = getattr(first_inserted_items, 'specific_id')
 items_to_insert_into_db = []
-n = Post.objects.count()
-
-for i in range(1, n+1):
-    row = Post.objects.get(pk=i)
-    db_specific_id.append(row.specific_id)
-
 for item in result:
-    if item['specific_id'] not in db_specific_id:
-        items_to_insert_into_db.append(item)
+    if item['specific_id'] == first_inserted_specific_id:
+        break
+    items_to_insert_into_db.append(item)
 
 for item in items_to_insert_into_db:
     print("new item added!! : " + item['title'])
