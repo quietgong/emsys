@@ -6,6 +6,7 @@ class Post(models.Model):
     link = models.TextField()
     specific_id = models.CharField(max_length=15)
     content = models.TextField()
+    date = models.CharField(max_length=20)
     voter = models.ManyToManyField(User, blank=True, related_name='Notice_sw_voter')  # voter 추가
 
 class Answer(models.Model):

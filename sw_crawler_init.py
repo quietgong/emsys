@@ -33,11 +33,17 @@ for i in range(0, LIMIT):
     for content in bsObject_content.find_all('div', {"id":"articles"}):
         post_content.append(content.text.strip())
 
+post_date = []
+for date in bsObject.find_all('td', {"class":'body_num'}):
+    post_date.append(date.text.strip())
+post_date = post_date[2::4]
+
 result = []
 for i in range(0, LIMIT):
     post_obj = {
         'title' : post_title[i],
         'link' : post_link[i],
+        'date' : post_date[i],
         'specific_id' : post_specific_id[i],
         'content' : post_content[i]
     }
@@ -60,4 +66,5 @@ for item in items_to_insert_into_db:
     Post(specific_id=item['specific_id'],
          content=item['content'],
          title=item['title'],
+         date=item['date'],
          link=item['link']).save()

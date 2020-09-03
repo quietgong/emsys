@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="slider_area slider_bg_1">
-  <div class="slider_text">
-    <div class="container">
-      <div class="position_relv">
-        <div class="row">
-          <div class="col-xl-8">
-            <div class="title_text title_text2 ">
-              <h3>학과 공지사항</h3>
+    <div class="slider_text">
+        <div class="container">
+            <div class="position_relv">
+                <div class="row">
+                    <div class="col-xl-8">
+                        <div class="title_text title_text2 ">
+                            <h3>학과 공지사항</h3>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
 <div class="container my-3">
@@ -22,6 +22,7 @@
         <tr class="table-row">
             <th>번호</th>
             <th>제목</th>
+            <th>등록일</th>
         </tr>
         </thead>
         <tbody>
@@ -32,7 +33,7 @@
             <td>
                 <a href="{% url 'notice_sw:detail' post.id %}">{{ post.title }}</a>
             </td>
-
+            <td>{{ post.date }}</td>
         </tr>
         {% endfor %}
         {% else %}

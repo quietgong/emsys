@@ -38,9 +38,9 @@
                         <li><i class="fa fa-thumbs-up"></i>{{post.voter.count}}</li>
                     </ul>
 
-                    <p class="excert">
+                    <h4 class="mb-20">
                         {{post.content}}
-                    </p>
+                    </h4>
                     <p><a href="{{post.link}}" target="_blank">[원문보기]</a></p>
                     {% if post.voter.all.count %}
                     <a href="{% url 'notice_sw:vote_post' post.id  %}"

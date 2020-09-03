@@ -54,9 +54,9 @@
                         <a href="{% url 'info:info_download' post.id %}" >{{ post.filename}}</a>
                     </div>
                     {% endif %}
-                    <p class="excert">
+                   <h4 class="mb-20">
                         {{post.content|mark}}
-                    </p>
+                    </h4>
                     {% if request.user == post.author %}
                     <a href="{% url 'contest:post_modify' post.id %}"
                        class="btn btn-sm btn-outline-secondary">수정</a>
