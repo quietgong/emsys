@@ -6127,3 +6127,8 @@ html , body
 
 /*비밀번호 찾는부분 css*/
 /*******************************/
+
+.content-font{
+letter-spacing:3px;
+line-height:30px;
+}
