@@ -40,7 +40,7 @@
                         </p>
                         {% if post.upload_files %}
                         <div>
-                            <span>다운로드 :&nbsp;</span>
+                            <i class="fa fa-download"></i>
                             <a href="{% url 'notice:notice_download' post.id %}" >{{ post.filename}}</a>
                         </div>
                         {% endif %}

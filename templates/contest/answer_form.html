@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <div class="slider_area slider_bg_1">
     <div class="slider_text">
@@ -8,7 +7,7 @@
                 <div class="row">
                     <div class="col-xl-8">
                         <div class="title_text title_text2 ">
-                            <h3>학술자료</h3>
+                            <h3>공모전</h3>
                         </div>
                     </div>
                 </div>
@@ -28,7 +27,7 @@
                         <textarea class="form-control" name="content" id="content" placeholder="비방 또는 욕설이 포함된 내용은 관리자에 의해 삭제 될 수 있습니다."
                                   cols="30" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
                     </div>
-                    <button type="submit" class="button button-contactForm btn_1 boxed-btn">저장하기</button>
+                    <button type="submit" class="button button-contactForm btn_1 boxed-btn">완료</button>
                 </div>
             </div>
         </form>
