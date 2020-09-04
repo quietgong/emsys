@@ -6,10 +6,13 @@ req = requests.get('http://sw7up.cbnu.ac.kr/home')
 html = req.text
 bsObject = BeautifulSoup(html, "html.parser")
 
-post = []
-for i in range(1,LIMIT+1):
-    post.append(bsObject.select(f"#content > div.container.space-top-1.space-top-lg-2 > div > div.col-lg-7.mb-5.mb-lg-0 > lf-board > div.board-content > div > lf-notice-list > ul > a:nth-child({i})"))
+post_title = []
+for title in bsObject.find_all('div', {"class":'title-container'}):
+    post_title.append(title.text.strip())
 
-post = str(post)
+post_link = []
+for link in bsObject.select('ul > a:nth-child(1)'):
+    post_link.append(link)
 
-print(post)
+post_link = str(post_link)
+print(type(post_link))

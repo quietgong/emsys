@@ -30,19 +30,19 @@
                     <div class="mt-10">
                         {% csrf_token %}
                         {% include 'form_errors_signup.html' %}
-                        <input type="text" id="idvalue" name="username" placeholder="아이디" class="single-input input-id">
+                        <input type="text" id="idvalue" name="username" placeholder="아이디" class="single-input input-id create-id">
                     </div>
                     <div class="mt-10">
-                        <input type="text" id="stdnumval" name="first_name" placeholder="학번" class="single-input input-id">
+                        <input type="text" id="stdnumval" name="first_name" placeholder="학번" class="single-input input-id create-stdnum">
                     </div>
                     <div class="mt-10">
-                        <input type="email" id="emailval" name="email" placeholder="이메일(비밀번호 찾기용도)" class="single-input input-id">
+                        <input type="email" id="emailval" name="email" placeholder="이메일(비밀번호 찾기용도)" class="single-input input-id create-email">
                     </div>
                     <div class="mt-10">
-                        <input type="password" id="pwd1" name="password1" placeholder="비밀번호" class="single-input input-pwd">
+                        <input type="password" id="pwd1" name="password1" placeholder="비밀번호" class="single-input input-pwd create-pwd">
                     </div>
                     <div class="mt-10">
-                        <input type="password" id="pwd2" name="password2" placeholder="비밀번호 확인" class="single-input input-pwd">
+                        <input type="password" id="pwd2" name="password2" placeholder="비밀번호 확인" class="single-input input-pwd create-pwd2">
                     </div>
                     <button type="submit" class="btn btn-outline-primary create-btn">등록</button>
                 </form>
