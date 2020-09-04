@@ -5935,18 +5935,18 @@ html , body
 /*컨테이너 미디어쿼리*/
 @media (max-width: 767px) {
   .login-container {
-    padding-right: 0;
-    width : 300px;
+
+    width : 400px;
     height : 600px;
-    padding-left : 60px;
+    padding-left : 50px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .login-container {
-    padding-right: 0;
+    padding-left: 30px;
     width : 450px;
-    height : 450px;
+    height : 550px;
   }
 }
 
@@ -5954,8 +5954,8 @@ html , body
   .login-container {
     padding-right: 0;
     width : 600px;
-    height : 460px;
-    padding-left : 100px;
+    height : 560px;
+    padding-left : 60px;
   }
 }
 
@@ -5964,20 +5964,21 @@ html , body
 @media (max-width: 767px) {
   .login-btn , .create-btn, .input-id, .input-pwd{
     padding-right: 0;
-    width : 150px;
+    width : 300px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .login-btn , .create-btn, .input-id, .input-pwd {
     padding-right: 0;
-    width : 220px;
+    width : 400px;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
   .login-btn , .create-btn, .input-id, .input-pwd{
-    padding-right: 0;
+    padding-left: 0;
+    width : 500px;
   }
 }
 /*텍스트 관련 미디어쿼리 적용*/
@@ -6018,27 +6019,28 @@ html , body
 @media (max-width: 767px) {
   .create-account-container{
     padding-right: 0;
-    width : 480px;
+    width : 380px;
+    height : 600px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .create-account-container{
-    height : 560px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
+    height : 620px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
     width : 680px;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
   .create-account-container{
-    height : 580px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
+    height : 700px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
     width : 650px;
   }
 }
 /*.create-account-row 미디어쿼리*/
 @media (max-width: 767px) {
   .create-account-row{
-    margin-left : 140px;
+    margin-left : 70px;
   }
 }
 
@@ -6148,3 +6150,43 @@ line-height:30px;
 font-size:20px;
 line-height:50px;
 }
+
+/* ff */
+#loading {
+ width: 100%;
+ height: 100%;
+ top: 0px;
+ left: 0px;
+ position: fixed;
+ display: block;
+ opacity: 0.7;
+ background-color: #fff;
+ z-index: 99;
+ text-align: center; }
+
+#loading-image {
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ z-index: 100; }
+ /*******************************/
+/*로그인메뉴*/
+.testvisible    /*로그인 메뉴 클래스명*/
+{
+  visibility: hidden;
+}
+@media (max-width: 767px) {
+  .testvisible    /*로그인 메뉴 클래스명*/
+  {
+    visibility: visible;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .testvisible    /*로그인 메뉴 클래스명*/
+  {
+    visibility: visible;
+  }
+}
+/*로그인메뉴끝*/
+/*******************************/

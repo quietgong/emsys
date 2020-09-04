@@ -112,7 +112,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # 각 media file에 대한 URL prefix
 MEDIA_URL = '/media/'
 
-# SMTP 설정
+# SMTP 설정 (테스트용)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = 'junhooh.0403@gmail.com'
@@ -120,3 +120,12 @@ EMAIL_HOST_PASSWORD = 'uvibcsebiyiilvsl'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# # SMTP 설정 (동아리 메일설정)
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = "smtp.gmail.com"
+# EMAIL_HOST_USER = 'emsys@g.cbnu.ac.kr'
+# EMAIL_HOST_PASSWORD = '[2단계 앱 비밀번호 적기]'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
