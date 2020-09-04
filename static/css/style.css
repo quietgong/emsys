@@ -5936,15 +5936,16 @@ html , body
 @media (max-width: 767px) {
   /*컨테이너 미디어쿼리*/
   .login-container {
+    margin-top:90px;
     padding-right: 0;
-    width : 270px;
-    height : 450px;
-    padding-left : 60px;
+    width : 400px;
+    height : 530px;
+    padding-left : 50px;
   }
   /*로그인 버튼 인풋 텍스트 미디어퀴리*/
-  .login-btn , .create-button, .find-pwd, .input-id, .input-pwd{
+  .login-btn , .create-button, .find-pwd, .input-id, .input-pwd {
     padding-right: 0;
-    width : 150px;
+    width : 300px;
   }
 }
 
@@ -6008,8 +6009,9 @@ html , body
 /*계정 생성부분 미디어쿼리*/
 @media (max-width: 767px) {
   .create-account-container{
-    padding-right: 0;
-    width : 300px;
+  margin-top:60px;
+    padding-left: 10px;
+    width : 400px;
     height : 600px;
   }
   /*.create-account-row 미디어쿼리*/
@@ -6019,7 +6021,7 @@ html , body
   /*계정생성 input 요소*/
   .create-id, .create-stdnum, .create-email, .create-pwd, .create-pwd2, .create-account-btn
   {
-    width : 190px;
+    width : 300px;
   }
   .create-account-btn{
   margin-top:20px;

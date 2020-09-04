@@ -23,7 +23,7 @@
             <div class="col-xl-12 login-col">
                 <div class="serction_title_large mb-95 login-text">
                     <h3>로그인</h3>
-                    {% include "form_errors.html" %}
+                    {% include "form_errors_login.html" %}
                 </div>
                 <form method="post" action="{% url 'accounts:login' %}">
                     {% csrf_token %}
