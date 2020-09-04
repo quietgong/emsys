@@ -5936,7 +5936,7 @@ html , body
 @media (max-width: 767px) {
   /*컨테이너 미디어쿼리*/
   .login-container {
-    margin-top:90px;
+    margin-top:50px;
     padding-right: 0;
     width : 400px;
     height : 530px;
@@ -6009,7 +6009,7 @@ html , body
 /*계정 생성부분 미디어쿼리*/
 @media (max-width: 767px) {
   .create-account-container{
-  margin-top:60px;
+  margin-top:40px;
     padding-left: 10px;
     width : 400px;
     height : 600px;
