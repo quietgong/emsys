@@ -6080,11 +6080,13 @@ html , body
   /*컨테이너*/
   .find-account-container{
     padding-left : 40px;
+    width:400px;
+    height:500px;
   }
   /*이메일 입력란*/
   .find-account
   {
-    width : 180px;
+    width : 300px;
   }
 
   .find-account-txt > h3{
@@ -6092,7 +6094,7 @@ html , body
   }
   .submit-btn
   {
-    width : 184px;
+    margin-top : 30px;
   }
 }
 
@@ -6100,11 +6102,12 @@ html , body
   /*컨테이너*/
   .find-account-container{
     padding-left : 60px;
+    height:600px;
   }
   /*이메일 입력란*/
   .find-account
   {
-    width : 240px;
+    width : 300px;
   }
     /*비밀번호 찾기 h3 부분*/
   .find-account-txt > h3{
@@ -6113,7 +6116,8 @@ html , body
   /*전송버튼 퀴리부분*/
   .submit-btn
   {
-    width : 242px;
+    width : 300px;
+    margin-top:50px;
   }
 }
 
@@ -6121,17 +6125,45 @@ html , body
   /*컨테이너*/
   .find-account-container{
     padding-left : 80px;
+    height:600px;
   }
-  /*전송버튼*/
-  .send-email-btn{
-    left : -70px;
+  .find-account
+  {
+    width : 400px;
+  }
+  /*전송버튼 퀴리부분*/
+  .submit-btn
+  {
+    width : 400px;
+    margin-top:50px;
   }
      /*비밀번호 찾기 h3 부분*/
   .find-account-txt > h3{
     font-size : 45px;
   }
 }
+@media (min-width: 992px) {
+/*컨테이너*/
+  .find-account-container{
+    padding-left : 100px;
+    height:600px;
+  }
+  .find-account
+  {
+    width : 400px;
+  }
+  /*전송버튼 퀴리부분*/
+  .submit-btn
+  {
+    width : 400px;
+    margin-top:50px;
+  }
+     /*비밀번호 찾기 h3 부분*/
+  .find-account-txt > h3{
+    font-size : 45px;
+  }
 
+}
 /*비밀번호 찾는부분 css*/
 /*******************************/
 
@@ -6143,29 +6175,9 @@ line-height:30px;
 line-height:30px;
 }
 .reset-password-font{
-font-size:20px;
+font-size:15px;
 line-height:50px;
 }
-
-/* ff */
-#loading {
- width: 100%;
- height: 100%;
- top: 0px;
- left: 0px;
- position: fixed;
- display: block;
- opacity: 0.7;
- background-color: #fff;
- z-index: 99;
- text-align: center; }
-
-#loading-image {
- position: absolute;
- top: 50%;
- left: 50%;
- z-index: 100; }
-
 /*******************************/
 /*로그인메뉴*/
 .testvisible    /*로그인 메뉴 클래스명*/
