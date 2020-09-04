@@ -11,8 +11,7 @@ for title in bsObject.find_all('div', {"class":'title-container'}):
     post_title.append(title.text.strip())
 
 post_link = []
-for link in bsObject.select('ul > a:nth-child(1)'):
+for link in bsObject.select("ul > a:nth-child(1)"):
     post_link.append(link)
+print(post_link)
 
-post_link = str(post_link)
-print(type(post_link))

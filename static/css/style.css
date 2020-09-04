@@ -5888,7 +5888,7 @@ h6 {
   margin-top : 20px;
   width : 400px;
 }
-.login-btn , .create-btn
+.login-btn , .create-button, .find-pwd
 {
   margin-top : 20px;
   border-radius: 2%;
@@ -5914,10 +5914,11 @@ html , body
 .login-container
 {
   background-color : rgba(255,255,255,0.8);
+  border-radius: 15px;
   padding : 50px 50px 20px 120px;
   width : 640px;
-  height : 610px;
-  border-radius: 15px;
+  height : 490px;
+
 }
 
 @keyframes gradient {
@@ -5932,60 +5933,50 @@ html , body
    }
 }
 /***********************************************/
-/*컨테이너 미디어쿼리*/
 @media (max-width: 767px) {
-  .login-container {
-
-    width : 400px;
-    height : 600px;
-    padding-left : 50px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .login-container {
-    padding-left: 30px;
-    width : 450px;
-    height : 550px;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1200px) {
+  /*컨테이너 미디어쿼리*/
   .login-container {
     padding-right: 0;
-    width : 600px;
-    height : 560px;
+    width : 270px;
+    height : 450px;
     padding-left : 60px;
   }
-}
-
-
-/*로그인 버튼 인풋 텍스트 미디어퀴리*/
-@media (max-width: 767px) {
-  .login-btn , .create-btn, .input-id, .input-pwd{
+  /*로그인 버튼 인풋 텍스트 미디어퀴리*/
+  .login-btn , .create-button, .find-pwd, .input-id, .input-pwd{
     padding-right: 0;
     width : 150px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .login-btn , .create-btn, .input-id, .input-pwd {
+  /*컨테이너 미디어쿼리*/
+  .login-container {
+    padding-right: 0;
+    width : 450px;
+    height : 450px;
+  }
+  /*로그인 버튼 인풋 텍스트 미디어퀴리*/
+  .login-btn , .create-button, .find-pwd, .input-id, .input-pwd {
     padding-right: 0;
     width : 220px;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
-  .login-btn , .create-btn, .input-id, .input-pwd{
+  /*컨테이너 미디어쿼리*/
+  .login-container {
+    padding-right: 0;
+    width : 600px;
+    height : 460px;
+    padding-left : 100px;
+  }
+  /*로그인 버튼 인풋 텍스트 미디어퀴리*/
+  .login-btn , .create-button, .find-pwd, .input-id, .input-pwd{
     padding-right: 0;
   }
 }
-/*텍스트 관련 미디어쿼리 적용*/
-@media (max-width: 767px) {
-  .find-id-pwd{
-    font-size : 10px;
-  }
-}
+
+
 
 /*2020-0903 로그인 화면 css 파일부분 끝 */
 /*******************************/
