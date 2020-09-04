@@ -5964,21 +5964,20 @@ html , body
 @media (max-width: 767px) {
   .login-btn , .create-btn, .input-id, .input-pwd{
     padding-right: 0;
-    width : 300px;
+    width : 150px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .login-btn , .create-btn, .input-id, .input-pwd {
     padding-right: 0;
-    width : 400px;
+    width : 220px;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
   .login-btn , .create-btn, .input-id, .input-pwd{
-    padding-left: 0;
-    width : 500px;
+    padding-right: 0;
   }
 }
 /*텍스트 관련 미디어쿼리 적용*/

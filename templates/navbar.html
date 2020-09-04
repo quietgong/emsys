@@ -25,7 +25,7 @@
                     <ul class="submenu">
                       <li><a href="{% url 'notice:index'%}">엠시스</a></li>
                       <li><a href="{% url 'notice_sw:list' %}">소프트웨어 학과</a></li>
-                      <li><a href="{% url 'notice_sw7up:list' %}">소중 사업단<br>(준비중...)</a></li>
+                      <li><a href="{% url 'notice_sw7up:list' %}">소중 사업단(준비중)</a></li>
                     </ul>
                   </li>
                   <li><a href="{% url 'activity:list'%}">동아리 활동</a></li>
@@ -48,7 +48,7 @@
           <div class="col-xl-2 col-lg-2 d-none d-lg-block">
             <div class="buy_ticket">
               {% if user.is_authenticated %}
-              <a href="{% url 'accounts:logout'%}" class="boxed-btn-white">Logout({{user.username}})</a>
+              <a href="{% url 'accounts:logout'%}" class="boxed-btn-white">Logout</a>
               {% else %}
               <a href="{% url 'accounts:login'%}" class="boxed-btn-white">Login</a>
               {% endif %}
