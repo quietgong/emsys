@@ -27,6 +27,7 @@ def list(request):
     context = {'post_list': post_list}
     return render(request, 'info/post_list.html', context)
 
+
 def detail(request, post_id):
     """
     info 내용 출력

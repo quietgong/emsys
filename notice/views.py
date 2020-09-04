@@ -17,6 +17,7 @@ def index(request):
     context = {'post_list': post_list}
     return render(request, 'notice/post_list.html', context)
 
+@login_required(login_url='accounts:login')
 def detail(request, post_id):
     """
     동아리공지 내용 출력
@@ -25,7 +26,6 @@ def detail(request, post_id):
     context = {'post': post}
     return render(request, 'notice/post_detail.html', context)
 
-@login_required(login_url='accounts:login')
 def download(request, pk):
     post = get_object_or_404(Post, pk=pk)
     url = post.upload_files.url[1:]

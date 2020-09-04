@@ -5936,15 +5936,16 @@ html , body
 @media (max-width: 767px) {
   .login-container {
     padding-right: 0;
-    width : 350px;
-    height : 450px;
+    width : 300px;
+    height : 600px;
+    padding-left : 60px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .login-container {
     padding-right: 0;
-    width : 430px;
+    width : 450px;
     height : 450px;
   }
 }
@@ -5954,6 +5955,7 @@ html , body
     padding-right: 0;
     width : 600px;
     height : 460px;
+    padding-left : 100px;
   }
 }
 
@@ -6000,7 +6002,7 @@ html , body
   background-color : rgba(255,255,255,0.8);
   border-radius: 15px;
   padding-top : 30px;
-  height : 800px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
+  height : 700px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
   width : 750px;
 }
 .create-account-row
@@ -6069,11 +6071,9 @@ html , body
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
 
 }
-.send-email-btn
+.submit-btn
 {
-  position :relative;
-  top : -60px;
-  left : -30px;
+  width : 345px;
 }
 
 /*미디어쿼리 부분*/
@@ -6092,6 +6092,10 @@ html , body
   .find-account-txt > h3{
     font-size : 20px;
   }
+  .submit-btn
+  {
+    width : 184px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -6107,6 +6111,11 @@ html , body
     /*비밀번호 찾기 h3 부분*/
   .find-account-txt > h3{
     font-size : 30px;
+  }
+  /*전송버튼 퀴리부분*/
+  .submit-btn
+  {
+    width : 242px;
   }
 }
 
@@ -6128,7 +6137,14 @@ html , body
 /*비밀번호 찾는부분 css*/
 /*******************************/
 
-.content-font{
+.notice-font{
 letter-spacing:3px;
 line-height:30px;
+}
+.content-font{
+line-height:30px;
+}
+.reset-password-font{
+font-size:20px;
+line-height:50px;
 }

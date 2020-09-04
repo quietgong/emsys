@@ -50,11 +50,11 @@
                     </ul>
                     {% if post.upload_files %}
                     <div>
-                        <i class="fa fa-download"></i>
-                        <a href="{% url 'info:info_download' post.id %}" >{{ post.filename}}</a>
+                        <i class="fa fa-download fa-2x"></i>
+                        <a href="{% url 'activity:post_download' post.id %}" >&nbsp{{ post.filename}}</a>
                     </div>
                     {% endif %}
-                    <h4 class="mb-20">
+                    <h4 class="mb-20 content-font">
                         {{post.content|mark}}
                     </h4>
                     {% if request.user == post.author %}
@@ -63,7 +63,7 @@
                     <a href="#" class="delete btn btn-sm btn-outline-secondary"
                        data-uri = "{% url 'activity:post_delete' post.id %}">삭제</a>
                     {% else %}
-                    {% if post.voter.all.count %}
+                    {% if request.user in post.voter.all %}
                     <a href="{% url 'activity:vote_post' post.id  %}"
                        class="btn btn-sm btn-outline-secondary recommend">추천 취소</a>
                     {% else %}

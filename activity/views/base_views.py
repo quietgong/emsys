@@ -39,6 +39,7 @@ def list(request):
 
     return render(request, 'activity/post_list.html', context)
 
+
 def detail(request, post_id):
     """
     activity 내용 출력

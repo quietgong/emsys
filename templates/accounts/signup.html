@@ -26,22 +26,25 @@
                         계정 생성
                     </h3>
                 </div>
-                <form method="post" class="post-form">
+                <form method="post" class="post-form" >
                     <div class="mt-10">
                         {% csrf_token %}
-                        {% include "form_errors.html" %}
-                        <input type="text" name="username" value="{{ form.username.value|default_if_none:'' }}" placeholder="아이디" class="single-input input-id">
+                        {% include 'form_errors_signup.html' %}
+                        <input type="text" id="idvalue" name="username" placeholder="아이디" class="single-input input-id">
                     </div>
                     <div class="mt-10">
-                        <input type="email" name="email" value="{{ form.username.value|default_if_none:'' }}" placeholder="이메일 : 비밀번호 찾기에 사용됩니다." class="single-input input-id">
+                        <input type="text" id="stdnumval" name="first_name" placeholder="학번" class="single-input input-id">
                     </div>
                     <div class="mt-10">
-                        <input type="password" name="password1" value="{{ form.username.value|default_if_none:'' }}" placeholder="비밀번호" class="single-input input-pwd">
+                        <input type="email" id="emailval" name="email" placeholder="이메일(비밀번호 찾기용도)" class="single-input input-id">
                     </div>
                     <div class="mt-10">
-                        <input type="password" name="password2" value="{{ form.username.value|default_if_none:'' }}" placeholder="비밀번호 확인" class="single-input input-pwd">
+                        <input type="password" id="pwd1" name="password1" placeholder="비밀번호" class="single-input input-pwd">
                     </div>
-                    <button type="submit" class="btn btn-outline-primary create-btn">회원가입</button>
+                    <div class="mt-10">
+                        <input type="password" id="pwd2" name="password2" placeholder="비밀번호 확인" class="single-input input-pwd">
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary create-btn">등록</button>
                 </form>
             </div>
         </div>

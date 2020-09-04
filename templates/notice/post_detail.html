@@ -35,13 +35,13 @@
                                 {% endif %}
                             </li>
                         </ul>
-                        <h4 class="mb-20">
+                        <h4 class="mb-20 content-font">
                         {{post.content|mark}}
                     </h4>
                         {% if post.upload_files %}
                         <div>
-                            <i class="fa fa-download"></i>
-                            <a href="{% url 'notice:notice_download' post.id %}" >{{ post.filename}}</a>
+                            <i class="fa fa-download fa-2x"></i>
+                            <a href="{% url 'notice:notice_download' post.id %}" >&nbsp{{ post.filename}}</a>
                         </div>
                         {% endif %}
                         <a href="{% url 'notice:index' %}" class="btn btn-sm btn-outline-secondary pull-right">목록</a>
