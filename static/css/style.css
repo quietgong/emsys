@@ -6009,22 +6009,26 @@ html , body
 @media (max-width: 767px) {
   .create-account-container{
     padding-right: 0;
-    width : 480px;
+    width : 300px;
+    height : 600px;
   }
   /*.create-account-row 미디어쿼리*/
   .create-account-row{
-    margin-left : 120px;
+    margin-left : 30px;
   }
   /*계정생성 input 요소*/
   .create-id, .create-stdnum, .create-email, .create-pwd, .create-pwd2, .create-account-btn
   {
     width : 190px;
   }
+  .create-account-btn{
+  margin-top:20px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .create-account-container{
-    height : 560px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
+    height : 620px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
     width : 680px;
   }
   /*.create-account-row 미디어쿼리*/
@@ -6035,11 +6039,14 @@ html , body
   {
     width : 300px;
   }
+  .create-account-btn{
+  margin-top:20px;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
   .create-account-container{
-    height : 580px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
+    height : 650px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
     width : 650px;
   }
   /*.create-account-row 미디어쿼리*/
@@ -6050,6 +6057,27 @@ html , body
   {
     width : 420px;
   }
+  .create-account-btn{
+  margin-top:20px;
+  }
+}
+@media (min-width: 1200px) {
+.create-account-container{
+    height : 700px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
+    width : 650px;
+  }
+  /*.create-account-row 미디어쿼리*/
+  .create-account-row{
+    margin-left : 90px;
+  }
+  .create-id, .create-stdnum, .create-email, .create-pwd, .create-pwd2, .create-account-btn
+  {
+    width : 420px;
+  }
+  .create-account-btn{
+  margin-top:20px;
+  }
+
 }
 /*회원가입화면 css 파일부분 끝 */
 /*******************************/
@@ -6095,6 +6123,7 @@ html , body
   .submit-btn
   {
     margin-top : 30px;
+    width:300px;
   }
 }
 
