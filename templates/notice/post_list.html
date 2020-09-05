@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load info_filter %}
 {% block content %}
 <div class="slider_area slider_bg_1">
   <div class="slider_text">
@@ -35,8 +34,8 @@
             <td class="text-center">
                 <a href="{% url 'notice:detail' post.id %}">{{ post.subject }}</a>
             </td>
-            <td>{{ post.author.username }}</td>
-            <td class="text-center">{{ post.create_date }}</td>
+            <td>{{ post.author.username}}</td>
+            <td>{{ post.create_date }}</td>
         </tr>
         {% endfor %}
         {% else %}
@@ -46,5 +45,10 @@
         {% endif %}
         </tbody>
     </table>
+    {% if user.is_staff %}
+    <div class="button-group-area mt-10">
+        <a href="{% url 'notice:post_create' %}" class="genric-btn primary-border circle">글쓰기<span class="lnr lnr-arrow-right"></span></a>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}

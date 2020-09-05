@@ -6,9 +6,10 @@ from django.contrib.auth.forms import PasswordChangeForm
 class UserForm(UserCreationForm):
     email = forms.EmailField(label="이메일")
     first_name = forms.CharField(label="학번", max_length=20)
+    is_active = False
     class Meta:
         model = User
-        fields = ("username", "first_name", "email")
+        fields = ("username", "first_name", "email", "is_active")
 
 class CustomPasswordChangeForm(PasswordChangeForm):
     def __init__(self, *args, **kwargs):

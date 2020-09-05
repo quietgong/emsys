@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="slider_area slider_bg_1">
+    <div class="slider_text">
+        <div class="container">
+            <div class="position_relv">
+                <div class="row">
+                    <div class="col-xl-8">
+                        <div class="title_text title_text2 ">
+                            <h3>동아리<br>공지사항</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">글 등록</h5>
+    <form method="post" class="post-form my-3" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- 오류표시 Start -->
+        {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+            {% if field.errors %}
+            <strong>{{ field.label }}</strong>
+            {{ field.errors }}
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <!-- 오류표시 End -->
+        <div class="form-group">
+            <label for="subject">제목</label>
+            <input type="text" class="form-control" name="subject" id="subject"
+                   value="{{ form.subject.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <label for="content">내용</label>
+            <textarea class="form-control" name="content" id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">저장하기</button>
+        <div class="form-group">
+            {{ form.upload_files }}
+            <small id="help" class="form-text text-muted">
+                [파일 업로드]&nbsp;첨부할 파일을 업로드해주세요. 여러 파일은 압축해서 업로드해주세요.
+            </small>
+        </div>
+    </form>
+</div>
+{% endblock %}

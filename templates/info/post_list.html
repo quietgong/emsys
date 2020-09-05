@@ -45,5 +45,10 @@
         {% endif %}
         </tbody>
     </table>
+    {% if user.is_staff %}
+    <div class="button-group-area mt-10">
+        <a href="{% url 'info:post_create' %}" class="genric-btn primary-border circle">글쓰기<span class="lnr lnr-arrow-right"></span></a>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}

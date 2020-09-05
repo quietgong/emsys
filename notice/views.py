@@ -4,8 +4,10 @@ import urllib
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.utils import timezone
 
+from notice.forms import PostForm
 from notice.models import Post
 
 
@@ -25,6 +27,67 @@ def detail(request, post_id):
     post = Post.objects.get(id=post_id)
     context = {'post': post}
     return render(request, 'notice/post_detail.html', context)
+
+def post_create(request):
+    """
+    notice 글등록
+    """
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.create_date = timezone.now()
+            post.author = request.user
+            if request.FILES:
+                if 'upload_files' in request.FILES.keys():
+                    post.filename = request.FILES['upload_files'].name
+            post.save()
+            return redirect('notice:detail', post_id=post.id)
+    else:
+        form = PostForm()
+    context = {'form': form}
+    return render(request, 'notice/post_form.html', context)
+
+def post_modify(request, post_id):
+    """
+    notice 글수정
+    """
+    post = get_object_or_404(Post, pk=post_id)
+    if request.user != post.author:
+        messages.error(request, '수정 권한이 없습니다.')
+        return redirect('notice:detail', post_id=post.id)
+
+    if request.method == "POST":
+        file_change_check = request.POST.get('fileChange', False)
+        file_check = request.POST.get('upload_files-clear', False)
+        if file_check or file_change_check:
+            os.remove(os.path.join(settings.MEDIA_ROOT, post.upload_files.path))
+
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            if request.FILES:
+                if 'upload_files' in request.FILES.keys():
+                    post.filename = request.FILES['upload_files'].name
+            post.author = request.user
+            post.modify_date = timezone.now()
+            post.save()
+            return redirect('notice:detail', post_id=post.id)
+    else:
+        form = PostForm(instance=post)
+    context={'form': form}
+    return render(request, 'notice/post_form.html', context)
+
+def post_delete(request, post_id):
+    """
+    notice 글삭제
+    """
+    post = get_object_or_404(Post, pk=post_id)
+    if request.user != post.author:
+        messages.error(request, '삭제 권한이 없습니다.')
+        return redirect('notice:detail', post_id=post.id)
+    post.delete()
+    return redirect('notice:list')
 
 def download(request, pk):
     post = get_object_or_404(Post, pk=pk)

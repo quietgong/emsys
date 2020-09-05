@@ -6025,7 +6025,7 @@ html , body
   .create-account-container{
     padding-left: 10px;
     width : 400px;
-    height : 600px;
+    height : 670px;
   }
   /*.create-account-row 미디어쿼리*/
   .create-account-row{
@@ -6043,7 +6043,7 @@ html , body
 
 @media (min-width: 768px) and (max-width: 991px) {
   .create-account-container{
-    height : 620px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
+    height : 680px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
     width : 680px;
   }
   /*.create-account-row 미디어쿼리*/
@@ -6061,7 +6061,7 @@ html , body
 
 @media (min-width: 992px) and (max-width: 1200px) {
   .create-account-container{
-    height : 650px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
+    height : 700px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
     width : 650px;
   }
   /*.create-account-row 미디어쿼리*/
@@ -6078,7 +6078,7 @@ html , body
 }
 @media (min-width: 1200px) {
 .create-account-container{
-    height : 700px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
+    height : 720px;       /*토스트 메시지 뜨게하고 싶을땐 여기 사이즈 늘리고 줄이면 됨*/
     width : 650px;
   }
   /*.create-account-row 미디어쿼리*/
