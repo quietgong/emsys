@@ -54,7 +54,7 @@
                         <a href="{% url 'contest:post_download' post.id %}" >&nbsp{{ post.filename}}</a>
                     </div>
                     {% endif %}
-                  <h4 class="mb-20 content-font">
+                    <h4 class="mb-20 content-font">
                         {{post.content|mark}}
                     </h4>
                     {% if request.user == post.author %}

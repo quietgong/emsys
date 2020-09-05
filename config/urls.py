@@ -16,7 +16,7 @@ urlpatterns = [
                   path('notice_sw7up/', include('notice_sw7up.urls')),
                   path('activity/', include('activity.urls')),
                   path('contest/', include('contest.urls')),
-                  path('admin/', admin.site.urls),
+                  path('emsysadmin/', admin.site.urls),
                   path('', start_views.index, name='index'),
                   path('intro', start_views.intro, name='intro'),
 
