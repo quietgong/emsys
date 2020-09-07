@@ -5,11 +5,11 @@ import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
 import django
 django.setup()
-from notice_sw.models import Post
+from recruit.models import Post
 
-LIMIT = 1
+LIMIT = 15
 
-html = urlopen("https://software.cbnu.ac.kr/bbs/bbs.php?db=notice")
+html = urlopen("https://software.cbnu.ac.kr/bbs/bbs.php?db=recruit")
 bsObject = BeautifulSoup(html, "html.parser")
 
 post_title = []
@@ -38,32 +38,29 @@ for date in bsObject.find_all('td', {"class":'body_num'}):
     post_date.append(date.text.strip())
 post_date = post_date[2::4]
 
-post_order = []
-for total in post_order:
-    post_order.append()
-
 result = []
 for i in range(0, LIMIT):
     post_obj = {
         'title' : post_title[i],
         'link' : post_link[i],
-        'date' : post_date[i],
         'specific_id' : post_specific_id[i],
-        'content' : post_content[i]
+        'content' : post_content[i],
+        'date' : post_date[i]
     }
     result.append(post_obj)
 
 # 크롤링한 데이터를 장고 DB에 저장
-first_inserted_items = Post.objects.first()
-if first_inserted_items is None:
-    first_inserted_specific_id = ""
-else:
-    first_inserted_specific_id = getattr(first_inserted_items, 'specific_id')
+db_specific_id = []
 items_to_insert_into_db = []
+n = Post.objects.count()
+
+for i in range(1, n+1):
+    row = Post.objects.get(pk=i)
+    db_specific_id.append(row.specific_id)
+
 for item in result:
-    if item['specific_id'] == first_inserted_specific_id:
-        break
-    items_to_insert_into_db.append(item)
+    if item['specific_id'] not in db_specific_id:
+        items_to_insert_into_db.append(item)
 
 for item in items_to_insert_into_db:
     print("new item added!! : " + item['title'])

@@ -5,11 +5,11 @@ import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
 import django
 django.setup()
-from notice_sw.models import Post
+from recruit.models import Post
 
 LIMIT = 1
 
-html = urlopen("https://software.cbnu.ac.kr/bbs/bbs.php?db=notice")
+html = urlopen("https://software.cbnu.ac.kr/bbs/bbs.php?db=recruit")
 bsObject = BeautifulSoup(html, "html.parser")
 
 post_title = []

@@ -15,29 +15,32 @@
             <div class="main-menu  d-none d-lg-block">
               <nav>
                 <ul id="navigation">
-                  <li><a href="{% url 'info:index' %}">동아리 소개 <i class="ti-angle-down"></i></a>
+                  <li><a href="{% url 'info:index' %}">동아리<i class="ti-angle-down"></i></a>
                     <ul class="submenu">
-                      <li><a href="{% url 'info:index' %}">동아리 소개</a></li>
-                      <li><a href="{% url 'info:list' %}">동아리 정보공개</a></li>
+                      <li><a href="{% url 'info:intro'%}">소개</a></li>
+                      <li><a href="{% url 'greeting:list'%}">가입인사</a></li>
+                      <li><a href="{% url 'info:list' %}">결산내역</a></li>
+                      <li><a href="{% url 'notice:index'%}">공지사항</a></li>
                     </ul>
                   </li>
                   <li><a href="{% url 'notice:index'%}">공지사항 <i class="ti-angle-down"></i></a>
                     <ul class="submenu">
-                      <li><a href="{% url 'notice:index'%}">엠시스</a></li>
                       <li><a href="{% url 'notice_sw:list' %}">소프트웨어 학과</a></li>
                       <li><a href="http://sw7up.cbnu.ac.kr/community/notice" target="_blank">소중 사업단(준비중)</a></li>
+                      <li><a href="{% url 'recruit:list' %}">취업 정보</a></li>
                     </ul>
                   </li>
                   <li><a href="{% url 'activity:list'%}">동아리 활동</a></li>
                   <li><a href="{% url 'study:list'%}">자료실 <i class="ti-angle-down"></i></a>
                     <ul class="submenu">
-                      <li><a href="{% url 'study:list'%}">햑술 자료</a></li>
+                      <li><a href="{% url 'study:list'%}">학술 자료</a></li>
                       <li><a href="{% url 'contest:list'%}">공모전 자료</a></li>
                     </ul>
                   </li>
                   {% if user.is_authenticated %}
                   <li><a href="{% url 'accounts:change_password'%}">마이페이지</a></li>
                   <li><a class="testvisible" href="{% url 'accounts:logout'%}">로그아웃({{user.username}})</a></li>
+                  <li><a href="{% url 'inquiry:post_create'%}">문의하기</a></li>
                   {% else %}
                   <li><a class="testvisible" href="{% url 'accounts:login'%}">로그인</a></li>
                   {% endif %}

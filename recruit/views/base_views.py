@@ -7,7 +7,7 @@ from ..models import Post
 
 def list(request):
     """
-    notice_sw 목록 출력
+    recruit 목록 출력
     """
     # 입력 파라미터
     kw = request.GET.get('kw', '')  # 검색어
@@ -31,7 +31,7 @@ def list(request):
 
     context = {'post_list': post_list, 'kw': kw, 'so': so}  # page, kw, so가 추가되었다.
 
-    return render(request, 'notice_sw/post_list.html', context)
+    return render(request, 'recruit/post_list.html', context)
 
 @login_required(login_url='accounts:login')
 def detail(request, post_id):
@@ -40,4 +40,4 @@ def detail(request, post_id):
     """
     post = get_object_or_404(Post, pk=post_id)
     context = {'post': post}
-    return render(request, 'notice_sw/post_detail.html', context)
+    return render(request, 'recruit/post_detail.html', context)

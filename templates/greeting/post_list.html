@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load greeting_filter %}
+{% block content %}
+<div class="slider_area slider_bg_1">
+    <div class="slider_text">
+        <div class="container">
+            <div class="position_relv">
+                <div class="row">
+                    <div class="col-xl-8">
+                        <div class="title_text title_text2 ">
+                            <h3 class="c1">가</h3>
+                            <h3 class="c2">입</h3>
+                            <h3 class="c3">인</h3>
+                            <h3 class="c3">사</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-3">
+    <table class="table table-striped table-hover table-condensed">
+        <thead>
+        <tr class="text-center table-row">
+            <th>#</th>
+            <th class="text-center">제목</th>
+            <th>글쓴이</th>
+            <th>작성일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if post_list %}
+        {% for post in post_list %}
+        <tr class="text-center">
+            <td>
+                <!-- 번호 = 전체건수 - 시작인덱스 - 현재인덱스 + 1 -->
+                {{post_list.paginator.count|sub:post_list.start_index|sub:forloop.counter0|add:1}}
+            </td>
+
+            <td class="text-center">
+                <!-- 제목 표시 -->
+                <a href="{% url 'greeting:detail' post.id %}">{{ post.subject }}</a>
+                {% if post.answer_set.count > 0 %}
+                <span class="text-danger small ml-2">[{{post.answer_set.count}}]</span>
+                {% endif %}
+            </td>
+            <td>
+                <!-- 글쓴이 표시 -->
+                {{ post.author.username }}</td>
+            <!-- 작성일지 표시 -->
+            <td class="text-center">{{ post.create_date }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="3">글이 없습니다.</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+
+    <div class="button-group-area mt-10">
+        <a href="{% url 'greeting:post_create' %}" class="genric-btn primary-border circle">글쓰기<span class="lnr lnr-arrow-right"></span></a>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script type='text/javascript'>
+$(document).ready(function(){
+    $(".page-link").on('click', function() {
+        $("#page").val($(this).data("page"));
+        $("#searchForm").submit();
+    });
+});
+</script>
+{% endblock %}

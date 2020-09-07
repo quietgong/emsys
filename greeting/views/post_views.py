@@ -2,34 +2,20 @@ import mimetypes
 import os
 import urllib
 
+from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 
-from notice.forms import PostForm
-from notice.models import Post
-
-def index(request):
-    """
-    동아리공지 목록 출력
-    """
-    post_list = Post.objects.order_by('-create_date')
-    context = {'post_list': post_list}
-    return render(request, 'notice/post_list.html', context)
+from ..forms import PostForm
+from ..models import Post
 
 @login_required(login_url='accounts:login')
-def detail(request, post_id):
-    """
-    동아리공지 내용 출력
-    """
-    post = Post.objects.get(id=post_id)
-    context = {'post': post}
-    return render(request, 'notice/post_detail.html', context)
-
 def post_create(request):
     """
-    notice 글등록
+    greeting 질문등록
     """
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
@@ -41,20 +27,21 @@ def post_create(request):
                 if 'upload_files' in request.FILES.keys():
                     post.filename = request.FILES['upload_files'].name
             post.save()
-            return redirect('notice:detail', post_id=post.id)
+            return redirect('greeting:detail', post_id=post.id)
     else:
         form = PostForm()
     context = {'form': form}
-    return render(request, 'notice/post_form.html', context)
+    return render(request, 'greeting/post_form.html', context)
 
+@login_required(login_url='accounts:login')
 def post_modify(request, post_id):
     """
-    notice 글수정
+    greeting 질문수정
     """
     post = get_object_or_404(Post, pk=post_id)
     if request.user != post.author:
         messages.error(request, '수정 권한이 없습니다.')
-        return redirect('notice:detail', post_id=post.id)
+        return redirect('greeting:detail', post_id=post.id)
 
     if request.method == "POST":
         file_change_check = request.POST.get('fileChange', False)
@@ -71,24 +58,26 @@ def post_modify(request, post_id):
             post.author = request.user
             post.modify_date = timezone.now()
             post.save()
-            return redirect('notice:detail', post_id=post.id)
+            return redirect('greeting:detail', post_id=post.id)
     else:
         form = PostForm(instance=post)
     context={'form': form}
-    return render(request, 'notice/post_form.html', context)
+    return render(request, 'greeting/post_form.html', context)
 
+@login_required(login_url='accounts:login')
 def post_delete(request, post_id):
     """
-    notice 글삭제
+    greeting 질문삭제
     """
     post = get_object_or_404(Post, pk=post_id)
     if request.user != post.author:
         messages.error(request, '삭제 권한이 없습니다.')
-        return redirect('notice:detail', post_id=post.id)
+        return redirect('greeting:detail', post_id=post.id)
     post.delete()
-    return redirect('notice:list')
+    return redirect('greeting:list')
 
-def download(request, pk):
+@login_required(login_url='accounts:login')
+def post_download_view(request, pk):
     post = get_object_or_404(Post, pk=pk)
     url = post.upload_files.url[1:]
     file_url = urllib.parse.unquote(url)

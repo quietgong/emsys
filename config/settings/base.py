@@ -24,6 +24,9 @@ INSTALLED_APPS = [
     'notice.apps.NoticeConfig',
     'notice_sw.apps.NoticeswConfig',
     'notice_sw7up.apps.Noticesw7UpConfig',
+    'recruit.apps.RecruitConfig',
+    'greeting.apps.GreetingConfig',
+    'inquiry.apps.InquiryConfig'
 ]
 
 MIDDLEWARE = [

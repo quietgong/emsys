@@ -7,8 +7,8 @@
                 <div class="row">
                     <div class="col-xl-8">
                         <div class="title_text title_text2 ">
-                            <h3 class="c1">학</h3>
-                            <h3 class="c2">과</h3><br>
+                            <h3 class="c1">취</h3>
+                            <h3 class="c2">업</h3><br>
                             <h3 class="c4">공</h3>
                             <h3 class="c5">지</h3>
                             <h3 class="c3">사</h3>
@@ -52,9 +52,9 @@
         {% for post in post_list reversed %}
         <tr>
             <td class="text-center">{{ forloop.counter }}</td>
-           <td class="text-center"><span class="badge badge-warning px-2 py-1">{{post.voter.count}}</span></td>
+            <td class="text-center"><span class="badge badge-warning px-2 py-1">{{post.voter.count}}</span></td>
             <td class="text-center">
-                <a href="{% url 'notice_sw:detail' post.id %}">{{ post.title }}</a>
+                <a href="{% url 'recruit:detail' post.id %}">{{ post.title }}</a>
                 {% if post.answer_set.count > 0 %}
                 <span class="text-danger small ml-2">[{{post.answer_set.count}}]</span>
                 {% endif %}
@@ -70,7 +70,7 @@
         </tbody>
     </table>
 
-    <form id="searchForm" method="get" action="{% url 'notice_sw:list' %}">
+    <form id="searchForm" method="get" action="{% url 'recruit:list' %}">
         <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
         <input type="hidden" id="so" name="so" value="{{so}}">
     </form>

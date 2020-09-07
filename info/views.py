@@ -12,6 +12,10 @@ from django.utils import timezone
 from info.forms import PostForm
 from info.models import Post
 
+
+def intro(request):
+    return render(request, 'info/intro.html')
+
 def list(request):
     """
     info 목록 출력
