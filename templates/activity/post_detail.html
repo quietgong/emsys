@@ -55,7 +55,7 @@
                     </div>
                     {% endif %}
                     <h4 class="mb-20 content-font">
-                        {{post.content|mark}}
+                        {{post.content|mark|linebreaksbr}}
                     </h4>
                     {% if request.user == post.author %}
                     <a href="{% url 'activity:post_modify' post.id %}"

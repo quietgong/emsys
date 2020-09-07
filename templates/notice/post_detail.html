@@ -36,7 +36,7 @@
                             </li>
                         </ul>
                         <h3 class="mb-30 content-font">
-                            {{post.content}}
+                            {{post.content|linebreaksbr}}
                         </h3>
                         {% if request.user == post.author %}
                         <a href="{% url 'notice:post_modify' post.id %}"

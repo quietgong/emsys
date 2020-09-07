@@ -47,7 +47,7 @@
                         </li>
                     </ul>
                     <h4 class="mb-20 content-font">
-                        {{post.content|mark}}
+                        {{post.content|mark|linebreaksbr}}
                     </h4>
                     {% if request.user == post.author %}
                     <a href="{% url 'greeting:post_modify' post.id %}"
