@@ -49,7 +49,7 @@ for i in range(0, LIMIT):
     }
     result.append(post_obj)
 
-# 크롤링한 데이터를 장고 DB에 저장
+
 db_specific_id = []
 items_to_insert_into_db = []
 n = Post.objects.count()
