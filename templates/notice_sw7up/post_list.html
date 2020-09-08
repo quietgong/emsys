@@ -37,6 +37,7 @@
         <thead class="table-head">
         <tr class="text-center table-row">
             <th class="text-center">#</th>
+            <th class="text-center"><i class="fa fa-thumbs-up"></i></th>
             <th class="text-center">제목</th>
             <th class="text-center">등록일</th>
         </tr>
@@ -46,8 +47,12 @@
         {% for post in post_list reversed %}
         <tr>
             <td class="text-center">{{ forloop.counter }}</td>
+            <td class="text-center"><span class="badge badge-warning px-2 py-1">{{post.voter.count}}</span></td>
             <td class="text-center">
                 <a href="{% url 'notice_sw7up:detail' post.id %}">{{ post.title }}</a>
+                {% if post.answer_set.count > 0 %}
+                <span class="text-danger small ml-2">[{{post.answer_set.count}}]</span>
+                {% endif %}
             </td>
             <td class="text-center">{{ post.date }}</td>
         </tr>

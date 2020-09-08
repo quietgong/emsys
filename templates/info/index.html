@@ -98,7 +98,7 @@
         <table class="table table-striped table-hover table-condensed">
           <div>
             <a href="{% url 'notice_sw:list' %}" class="genric-btn info-border circle pull-right">More</a>
-            <h3 class="mb-30"><strong><i class="fa fa-university"></i>  학과 공지</strong></h3>
+            <h3 class="mb-30"><strong><i class="fa fa-bullhorn"></i>  학과 공지사항</strong></h3>
           </div>
           <thead class="table-head">
           <tr class="text-center table-row">
@@ -129,7 +129,47 @@
           </tbody>
         </table>
       </div>
-      <div class="col-md-6 col-xs-12">
+         <div class="col-md-6 col-xs-12">
+        <table class="table table-striped table-hover table-condensed">
+          <div>
+            <a href="{% url 'notice_sw7up:list' %}" class="genric-btn info-border circle pull-right">More</a>
+            <h3 class="mb-30"><strong><i class="fa fa-bullhorn"></i>  소중사업단 공지사항</strong></h3>
+          </div>
+          <thead class="table-head">
+          <tr class="text-center table-row">
+            <th class="text-center"><i class="fa fa-thumbs-up"></i></th>
+            <th class="text-center">제목</th>
+            <th class="text-center">등록일</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% if notice_sw7up_post_list %}
+          {% for post in notice_sw7up_post_list %}
+          <tr>
+            <td class="text-center"><span class="badge badge-warning px-2 py-1">{{post.voter.count}}</span></td>
+            <td class="text-center">
+              <a href="{% url 'notice_sw:detail' post.id %}">{{ post.title }}</a>
+              {% if post.answer_set.count > 0 %}
+              <span class="text-danger small ml-2">[{{post.answer_set.count}}]</span>
+              {% endif %}
+            </td>
+            <td class="text-center">{{ post.date }}</td>
+          </tr>
+          {% endfor %}
+          {% else %}
+          <tr>
+            <td colspan="3">글이 없습니다.</td>
+          </tr>
+          {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row align-items-center">
+       <div class="col-md-6 col-xs-12">
         <table class="table table-striped table-hover table-condensed">
           <a href="{% url 'recruit:list' %}" class="genric-btn info-border circle pull-right">More</a>
           <h3 class="mb-30"><strong><i class="fa fa-check"></i>  취업 정보</strong></h3>
