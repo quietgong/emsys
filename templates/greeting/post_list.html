@@ -28,6 +28,7 @@
             <th class="text-center">제목</th>
             <th>글쓴이</th>
             <th>작성일시</th>
+            <th>조회수</th>
         </tr>
         </thead>
         <tbody>
@@ -51,6 +52,7 @@
                 {{ post.author.username }}</td>
             <!-- 작성일지 표시 -->
             <td class="text-center">{{ post.create_date }}</td>
+            <td class="text-center">{{ post.hits }}</td>
         </tr>
         {% endfor %}
         {% else %}

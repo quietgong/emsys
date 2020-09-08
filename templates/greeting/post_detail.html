@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load greeting_filter %}
 {% block content %}
+{{post.update_counter}}
 <div class="slider_area slider_bg_1">
     <div class="slider_text">
         <div class="container">
@@ -45,6 +46,7 @@
                             {{post.create_date}}
                             {% endif %}
                         </li>
+                        <li><i class="fa fa-eye"></i>조회수 : {{post.hits}}</li>
                     </ul>
                     <h4 class="mb-20 content-font">
                         {{post.content|mark|linebreaksbr}}
@@ -56,12 +58,12 @@
                        data-uri = "{% url 'greeting:post_delete' post.id %}">삭제</a>
                     {% else %}
                     {% endif %}
-                    <a href="{% url 'greeting:list' %}" class="btn btn-sm btn-outline-secondary pull-right">목록</a>
+                    <a href="{% url 'greeting:list' %}" class="genric-btn primary-border circle pull-right">목록</a>
                 </div>
             </div>
             <!--comments-area 시작 -->
             <div class="comments-area">
-                <h4>[댓글 {{post.answer_set.count}}개가 있어요 <i class="fa fa-smile"></i>]</h4>
+                <h4>[댓글 {{post.answer_set.count}}개가 있어요]</h4>
                 <div class="comment-list">
                     {% for answer in post.answer_set.all %}
                     <a name="answer_{{answer.id}}"></a>

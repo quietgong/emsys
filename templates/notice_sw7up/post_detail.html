@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{{post.update_counter}}
 <div class="slider_area slider_bg_1">
     <div class="slider_text">
         <div class="container">
@@ -36,6 +37,7 @@
                     <h2>{{post.title}}</h2>
                     <ul class="blog-info-link mt-3 mb-4">
                         <li><i class="fa fa-thumbs-up"></i>{{post.voter.count}}</li>
+                         <li><i class="fa fa-eye"></i>조회수 : {{post.hits}}</li>
                     </ul>
 
                     <h4 class="mb-20 notice-font">
@@ -54,7 +56,7 @@
             </div>
             <!--comments-area 시작 -->
             <div class="comments-area">
-                <h4>[댓글 {{post.answer_set.count}}개가 있어요 <i class="fa fa-smile"></i>]</h4>
+                <h4>[댓글 {{post.answer_set.count}}개가 있어요]</h4>
                 <div class="comment-list">
                     {% for answer in post.answer_set.all %}
                     <a name="answer_{{answer.id}}"></a>

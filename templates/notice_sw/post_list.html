@@ -45,6 +45,7 @@
              <th class="text-center"><i class="fa fa-thumbs-up"></i></th>
             <th class="text-center">제목</th>
             <th class="text-center">등록일</th>
+            <th>조회수</th>
         </tr>
         </thead>
         <tbody>
@@ -60,6 +61,7 @@
                 {% endif %}
             </td>
             <td class="text-center">{{ post.date }}</td>
+             <td class="text-center">{{ post.hits }}</td>
         </tr>
         {% endfor %}
         {% else %}

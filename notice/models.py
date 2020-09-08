@@ -12,6 +12,12 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Notice_author')
     upload_files = models.FileField(null=True, blank=True, verbose_name='파일')
     filename = models.CharField(max_length=64, null=True, verbose_name='첨부파일명')
+    hits = models.PositiveIntegerField(default=0)
+
+    @property
+    def update_counter(self):
+        self.hits += 1
+        self.save()
     def delete(self, *args, **kargs):
         if self.upload_files:
             os.remove(os.path.join(settings.MEDIA_ROOT, self.upload_files.path))

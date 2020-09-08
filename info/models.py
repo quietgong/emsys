@@ -11,6 +11,7 @@ class Post(models.Model):
     create_date = models.DateTimeField()
     upload_files = models.FileField(null=True, blank=True, verbose_name='파일')
     filename = models.CharField(max_length=64, null=True, verbose_name='첨부파일명')
+
     def delete(self, *args, **kargs):
         if self.upload_files:
             os.remove(os.path.join(settings.MEDIA_ROOT, self.upload_files.path))

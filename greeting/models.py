@@ -7,6 +7,12 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Greeting_author')
     create_date = models.DateTimeField()
     modify_date = models.DateTimeField(null=True, blank=True)
+    hits = models.PositiveIntegerField(default=0)
+
+    @property
+    def update_counter(self):
+        self.hits += 1
+        self.save()
 
     def __str__(self):
         return self.subject

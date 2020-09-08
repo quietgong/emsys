@@ -8,6 +8,12 @@ class Post(models.Model):
     content = models.TextField()
     date = models.CharField(max_length=20)
     voter = models.ManyToManyField(User, blank=True, related_name='Notice_sw_voter')  # voter 추가
+    hits = models.PositiveIntegerField(default=0)
+
+    @property
+    def update_counter(self):
+        self.hits += 1
+        self.save()
 
 class Answer(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
