@@ -4,7 +4,7 @@ from django.db import models
 class Post(models.Model):
     title = models.CharField(max_length=200)
     link = models.TextField()
-    specific_id = models.CharField(max_length=15)
+    specific_id = models.CharField(max_length=25)
     content = models.TextField()
     date = models.CharField(max_length=20)
     voter = models.ManyToManyField(User, blank=True, related_name='Notice_sw7up_voter')  # voter 추가
