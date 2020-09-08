@@ -14,7 +14,7 @@ bsObject = BeautifulSoup(html, "html.parser")
 
 post_title = []
 for title in bsObject.find_all('b'):
-    post_title.append(title.text.strip()[:28])
+    post_title.append(title.text.strip()[:26])
 
 post_link = []
 for link in bsObject.find_all('td', {"class":'body_bold'}):
