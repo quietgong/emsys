@@ -42,9 +42,7 @@ for i in range(0, 4):
 
     bsObject_content = BeautifulSoup(html, "html.parser")
     for content in bsObject_content.find_all('div', {"class":"mt-4 ck ck-blurred ck-content ck-editor__editable ck-editor__editable_inline ck-rounded-corners"}):
-        post_content.append(content.text.strip())
-
-
+        post_content.append(content.text.strip()[:26])
 
 result = []
 for i in range(0, 4):
